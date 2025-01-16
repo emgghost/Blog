@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Blog.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Blog.WebApi.Controllers.TestController.Get">
+            <summary>
+            Gets a test message
+            </summary>
+            <returns>A test message</returns>
+        </member>
+    </members>
+</doc>

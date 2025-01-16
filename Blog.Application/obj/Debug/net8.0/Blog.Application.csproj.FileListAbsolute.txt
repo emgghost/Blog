@@ -1,0 +1,17 @@
+/home/emg/Source/Blog/Blog.Application/bin/Debug/net8.0/Blog.Application.deps.json
+/home/emg/Source/Blog/Blog.Application/bin/Debug/net8.0/Blog.Application.dll
+/home/emg/Source/Blog/Blog.Application/bin/Debug/net8.0/Blog.Application.pdb
+/home/emg/Source/Blog/Blog.Application/bin/Debug/net8.0/Blog.Domain.dll
+/home/emg/Source/Blog/Blog.Application/bin/Debug/net8.0/Blog.Infrastructure.dll
+/home/emg/Source/Blog/Blog.Application/bin/Debug/net8.0/Blog.Domain.pdb
+/home/emg/Source/Blog/Blog.Application/bin/Debug/net8.0/Blog.Infrastructure.pdb
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.csproj.AssemblyReference.cache
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.AssemblyInfoInputs.cache
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.AssemblyInfo.cs
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.csproj.CoreCompileInputs.cache
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.csproj.CopyComplete
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.dll
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/refint/Blog.Application.dll
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.pdb
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/ref/Blog.Application.dll

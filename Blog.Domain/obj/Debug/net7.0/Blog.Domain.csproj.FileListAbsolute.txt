@@ -1,0 +1,12 @@
+/home/emg/Source/Blog/Blog.Domain/bin/Debug/net7.0/Blog.Domain.deps.json
+/home/emg/Source/Blog/Blog.Domain/bin/Debug/net7.0/Blog.Domain.dll
+/home/emg/Source/Blog/Blog.Domain/bin/Debug/net7.0/Blog.Domain.pdb
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/Blog.Domain.csproj.AssemblyReference.cache
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/Blog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/Blog.Domain.AssemblyInfoInputs.cache
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/Blog.Domain.AssemblyInfo.cs
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/Blog.Domain.csproj.CoreCompileInputs.cache
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/Blog.Domain.dll
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/refint/Blog.Domain.dll
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/Blog.Domain.pdb
+/home/emg/Source/Blog/Blog.Domain/obj/Debug/net7.0/ref/Blog.Domain.dll
