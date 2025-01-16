@@ -17,11 +17,11 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<ActionResult<UserDto>> Register(UserCreateDto UserCreateDto)
+    public async Task<ActionResult<UserDto>> Register(CreateUserDto createUserDto)
     {
         try
         {
-            var user = await _userService.CreateAsync(UserCreateDto);
+            var user = await _userService.CreateAsync(createUserDto);
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
         catch (InvalidOperationException ex)

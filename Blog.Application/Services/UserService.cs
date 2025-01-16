@@ -43,16 +43,16 @@ public class UserService : IUserService
         return _mapper.Map<UserDto>(user);
     }
 
-    public async Task<UserDto> CreateAsync(UserCreateDto UserCreateDto)
+    public async Task<UserDto> CreateAsync(CreateUserDto CreateUserDto)
     {
-        if (await _context.Users.AnyAsync(u => u.Email == UserCreateDto.Email))
+        if (await _context.Users.AnyAsync(u => u.Email == CreateUserDto.Email))
             throw new InvalidOperationException("Email already exists.");
 
-        if (await _context.Users.AnyAsync(u => u.Username == UserCreateDto.Username))
+        if (await _context.Users.AnyAsync(u => u.Username == CreateUserDto.Username))
             throw new InvalidOperationException("Username already exists.");
 
-        var user = _mapper.Map<User>(UserCreateDto);
-        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(UserCreateDto.Password);
+        var user = _mapper.Map<User>(CreateUserDto);
+        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(CreateUserDto.Password);
         user.CreatedAt = DateTime.UtcNow;
 
         _context.Users.Add(user);

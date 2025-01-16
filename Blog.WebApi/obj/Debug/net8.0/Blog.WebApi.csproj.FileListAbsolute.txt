@@ -220,3 +220,4 @@
 /home/emg/Source/Blog/Blog.WebApi/bin/Debug/net8.0/Swashbuckle.AspNetCore.ReDoc.dll
 /home/emg/Source/Blog/Blog.WebApi/bin/Debug/net8.0/Blog.WebApi.staticwebassets.runtime.json
 /home/emg/Source/Blog/Blog.WebApi/bin/Debug/net8.0/appsettings.Development.json
+/home/emg/Source/Blog/Blog.WebApi/obj/Debug/net8.0/Blog.WebApi.sourcelink.json

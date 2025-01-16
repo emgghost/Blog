@@ -5,25 +5,26 @@ public class UserDto
     public int Id { get; set; }
     public string Username { get; set; } = null!;
     public string Email { get; set; } = null!;
-    public string FullName { get; set; } = null!;
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
     public string? Bio { get; set; }
     public string? AvatarUrl { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 }
 
-public class UserCreateDto
+public class CreateUserDto
 {
     public string Username { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string Password { get; set; } = null!;
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
     public string? Bio { get; set; }
     public string? AvatarUrl { get; set; }
 }
 
-public class UserUpdateDto
+public class UpdateUserDto
 {
     public string? Username { get; set; }
     public string? Email { get; set; }
@@ -45,7 +46,8 @@ public class UserListDto
 
 public class LoginDto
 {
-    public string Username { get; set; } = null!;
+    public string Email { get; set; } = null!;
+
     public string Password { get; set; } = null!;
 }
 

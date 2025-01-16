@@ -15,3 +15,4 @@
 /home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/refint/Blog.Application.dll
 /home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.pdb
 /home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/ref/Blog.Application.dll
+/home/emg/Source/Blog/Blog.Application/obj/Debug/net8.0/Blog.Application.sourcelink.json
