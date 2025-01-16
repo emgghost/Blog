@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YB9YoL/sb0w=",
+  "dgSpecHash": "dZwCA7q6zHw=",
   "success": true,
-  "projectFilePath": "/home/emg/Source/Blog/Blog.Application/Blog.Application.csproj",
+  "projectFilePath": "/home/emg/RiderProjects/Blog/Blog.Application/Blog.Application.csproj",
   "expectedPackageFiles": [
     "/home/emg/.nuget/packages/ardalis.guardclauses/4.3.0/ardalis.guardclauses.4.3.0.nupkg.sha512",
     "/home/emg/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",

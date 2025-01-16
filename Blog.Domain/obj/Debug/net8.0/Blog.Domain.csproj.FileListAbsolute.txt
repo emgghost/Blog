@@ -10,3 +10,16 @@
 /home/emg/Source/Blog/Blog.Domain/obj/Debug/net8.0/refint/Blog.Domain.dll
 /home/emg/Source/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.pdb
 /home/emg/Source/Blog/Blog.Domain/obj/Debug/net8.0/ref/Blog.Domain.dll
+/home/emg/RiderProjects/Blog/Blog.Domain/bin/Debug/net8.0/Blog.Domain.deps.json
+/home/emg/RiderProjects/Blog/Blog.Domain/bin/Debug/net8.0/Blog.Domain.dll
+/home/emg/RiderProjects/Blog/Blog.Domain/bin/Debug/net8.0/Blog.Domain.pdb
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.csproj.AssemblyReference.cache
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.AssemblyInfoInputs.cache
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.AssemblyInfo.cs
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.csproj.CoreCompileInputs.cache
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.sourcelink.json
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.dll
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/refint/Blog.Domain.dll
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/Blog.Domain.pdb
+/home/emg/RiderProjects/Blog/Blog.Domain/obj/Debug/net8.0/ref/Blog.Domain.dll

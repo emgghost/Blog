@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "z04xsqLSNibBffad+Fqx5tLx4fSbtud0ikr2rUJ1Lkk=",
+  "Hash": "LeSbRtB3rQ7c+UOXEb6x20L2M3A3vRGWvTHgTz45h4A=",
   "Source": "Blog.WebApi",
   "BasePath": "_content/Blog.WebApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Blog.WebApi/wwwroot",
       "Source": "Blog.WebApi",
-      "ContentRoot": "/home/emg/Source/Blog/Blog.WebApi/wwwroot/",
+      "ContentRoot": "/home/emg/RiderProjects/Blog/Blog.WebApi/wwwroot/",
       "BasePath": "_content/Blog.WebApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/home/emg/Source/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.css",
+      "Identity": "/home/emg/RiderProjects/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.css",
       "SourceId": "Blog.WebApi",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/emg/Source/Blog/Blog.WebApi/wwwroot/",
+      "ContentRoot": "/home/emg/RiderProjects/Blog/Blog.WebApi/wwwroot/",
       "BasePath": "_content/Blog.WebApi",
       "RelativePath": "swagger-ui/SwaggerDark.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot/swagger-ui/SwaggerDark.css"
     },
     {
-      "Identity": "/home/emg/Source/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.user.css",
+      "Identity": "/home/emg/RiderProjects/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.user.css",
       "SourceId": "Blog.WebApi",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/emg/Source/Blog/Blog.WebApi/wwwroot/",
+      "ContentRoot": "/home/emg/RiderProjects/Blog/Blog.WebApi/wwwroot/",
       "BasePath": "_content/Blog.WebApi",
       "RelativePath": "swagger-ui/SwaggerDark.user.css",
       "AssetKind": "All",

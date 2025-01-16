@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dL51FbLFcxI=",
+  "dgSpecHash": "Jy1qaBjsKu8=",
   "success": true,
-  "projectFilePath": "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj",
+  "projectFilePath": "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj",
   "expectedPackageFiles": [
     "/home/emg/.nuget/packages/ardalis.guardclauses/4.3.0/ardalis.guardclauses.4.3.0.nupkg.sha512",
     "/home/emg/.nuget/packages/erroror/1.9.0/erroror.1.9.0.nupkg.sha512",

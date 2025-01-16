@@ -1,3 +1,6 @@
+using Blog.Application.DTOs;
+using System.Collections.Generic;
+
 namespace Blog.Application.Interfaces;
 
 /// <summary>
@@ -29,4 +32,10 @@ public interface ICurrentUserService
     /// Gets the roles assigned to the current user
     /// </summary>
     IEnumerable<string> Roles { get; }
+
+    /// <summary>
+    /// Gets the complete details of the current authenticated user
+    /// </summary>
+    /// <returns>A UserDto containing the user's details if authenticated, null otherwise</returns>
+    Task<UserDto?> GetCurrentUserAsync();
 }

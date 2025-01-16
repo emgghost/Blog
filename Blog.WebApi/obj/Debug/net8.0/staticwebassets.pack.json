@@ -1,11 +1,11 @@
 {
   "Files": [
     {
-      "Id": "/home/emg/Source/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.css",
+      "Id": "/home/emg/RiderProjects/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.css",
       "PackagePath": "staticwebassets/swagger-ui/SwaggerDark.css"
     },
     {
-      "Id": "/home/emg/Source/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.user.css",
+      "Id": "/home/emg/RiderProjects/Blog/Blog.WebApi/wwwroot/swagger-ui/SwaggerDark.user.css",
       "PackagePath": "staticwebassets/swagger-ui/SwaggerDark.user.css"
     },
     {

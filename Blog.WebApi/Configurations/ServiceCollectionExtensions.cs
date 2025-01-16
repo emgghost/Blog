@@ -33,6 +33,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ITagService, TagService>();
+        services.AddScoped<IClaimProvider, ClaimProvider>();
 
         // Register Infrastructure Services
         services.AddScoped<IDateTimeService, DateTimeService>();

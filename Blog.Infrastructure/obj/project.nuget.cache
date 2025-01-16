@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yfU5Rs9658I=",
+  "dgSpecHash": "CiMGR8BZMTI=",
   "success": true,
-  "projectFilePath": "/home/emg/Source/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj",
+  "projectFilePath": "/home/emg/RiderProjects/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/home/emg/.nuget/packages/ardalis.guardclauses/4.3.0/ardalis.guardclauses.4.3.0.nupkg.sha512",
     "/home/emg/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",

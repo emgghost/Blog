@@ -15,13 +15,19 @@ public class MappingProfile : Profile
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
         // Post mappings
-        CreateMap<Post, PostDto>();
+        CreateMap<Post, PostDto>()
+            .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories));
         CreateMap<CreatePostDto, Post>();
         CreateMap<UpdatePostDto, Post>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
         // Category mappings
         CreateMap<Category, CategoryDto>();
+        CreateMap<Category, CategoryListDto>()
+            .ForMember(dest => dest.PostCount, opt => opt.MapFrom(src => src.Posts.Count));
+        CreateMap<CreateCategoryDto, Category>();
+        CreateMap<UpdateCategoryDto, Category>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         
         // Tag mappings
         CreateMap<Tag, TagDto>();

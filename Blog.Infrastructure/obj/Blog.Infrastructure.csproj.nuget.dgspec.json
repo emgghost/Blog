@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/emg/Source/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj": {}
+    "/home/emg/RiderProjects/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj": {}
   },
   "projects": {
-    "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj": {
+    "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj",
+        "projectUniqueName": "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj",
         "projectName": "Blog.Domain",
-        "projectPath": "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj",
+        "projectPath": "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj",
         "packagesPath": "/home/emg/.nuget/packages/",
-        "outputPath": "/home/emg/Source/Blog/Blog.Domain/obj/",
+        "outputPath": "/home/emg/RiderProjects/Blog/Blog.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/emg/.nuget/NuGet/NuGet.Config"
@@ -71,14 +71,14 @@
         }
       }
     },
-    "/home/emg/Source/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj": {
+    "/home/emg/RiderProjects/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/emg/Source/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj",
+        "projectUniqueName": "/home/emg/RiderProjects/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj",
         "projectName": "Blog.Infrastructure",
-        "projectPath": "/home/emg/Source/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj",
+        "projectPath": "/home/emg/RiderProjects/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj",
         "packagesPath": "/home/emg/.nuget/packages/",
-        "outputPath": "/home/emg/Source/Blog/Blog.Infrastructure/obj/",
+        "outputPath": "/home/emg/RiderProjects/Blog/Blog.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/emg/.nuget/NuGet/NuGet.Config"
@@ -93,8 +93,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj": {
-                "projectPath": "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj"
+              "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj": {
+                "projectPath": "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj"
               }
             }
           }

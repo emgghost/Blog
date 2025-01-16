@@ -17,12 +17,14 @@ public class UserService : IUserService
     private readonly BlogDbContext _context;
     private readonly IMapper _mapper;
     private readonly IConfiguration _configuration;
+    private readonly IClaimProvider _claimProvider;
 
-    public UserService(BlogDbContext context, IMapper mapper, IConfiguration configuration)
+    public UserService(BlogDbContext context, IMapper mapper, IConfiguration configuration, IClaimProvider claimProvider)
     {
         _context = context;
         _mapper = mapper;
         _configuration = configuration;
+        _claimProvider = claimProvider;
     }
 
     public async Task<UserDto> GetByIdAsync(int id)
@@ -115,10 +117,9 @@ public class UserService : IUserService
         return token;
     }
 
-    public async Task<UserDto> GetCurrentUserAsync()
+    public async Task<string?> GetCurrentUserAsync()
     {
-        // This method should be implemented based on your authentication context
-        throw new NotImplementedException();
+        return _claimProvider.GetUserEmail();
     }
 
     private string GenerateJwtToken(User user)

@@ -4006,11 +4006,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/emg/Source/Blog/Blog.Application/Blog.Application.csproj",
+      "projectUniqueName": "/home/emg/RiderProjects/Blog/Blog.Application/Blog.Application.csproj",
       "projectName": "Blog.Application",
-      "projectPath": "/home/emg/Source/Blog/Blog.Application/Blog.Application.csproj",
+      "projectPath": "/home/emg/RiderProjects/Blog/Blog.Application/Blog.Application.csproj",
       "packagesPath": "/home/emg/.nuget/packages/",
-      "outputPath": "/home/emg/Source/Blog/Blog.Application/obj/",
+      "outputPath": "/home/emg/RiderProjects/Blog/Blog.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/emg/.nuget/NuGet/NuGet.Config"
@@ -4025,11 +4025,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj": {
-              "projectPath": "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj"
+            "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj": {
+              "projectPath": "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj"
             },
-            "/home/emg/Source/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj": {
-              "projectPath": "/home/emg/Source/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj"
+            "/home/emg/RiderProjects/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj": {
+              "projectPath": "/home/emg/RiderProjects/Blog/Blog.Infrastructure/Blog.Infrastructure.csproj"
             }
           }
         }

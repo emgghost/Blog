@@ -1,3 +1,4 @@
+using Blog.Application.DTOs;
 using Blog.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
@@ -6,22 +7,37 @@ namespace Blog.Infrastructure.Services;
 
 public class CurrentUserService : ICurrentUserService
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IClaimProvider _claimProvider;
+    private readonly IUserService _userService;
 
-    public CurrentUserService(IHttpContextAccessor httpContextAccessor)
+    public CurrentUserService(IClaimProvider claimProvider, IUserService userService)
     {
-        _httpContextAccessor = httpContextAccessor;
+        _claimProvider = claimProvider;
+        _userService = userService;
     }
 
-    public string? UserId => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+    public string? UserId => _claimProvider.GetUserId();
 
-    public string? UserName => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
+    public string? UserName => _claimProvider.GetClaimValue(ClaimTypes.Name);
 
-    public string? UserEmail => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Email);
+    public string? UserEmail => _claimProvider.GetUserEmail();
 
-    public bool IsAuthenticated => _httpContextAccessor.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
+    public bool IsAuthenticated => _claimProvider.IsAuthenticated();
 
-    public IEnumerable<string> Roles => _httpContextAccessor.HttpContext?.User?.Claims
-        .Where(c => c.Type == ClaimTypes.Role)
-        .Select(c => c.Value) ?? Enumerable.Empty<string>();
+    public IEnumerable<string> Roles => _claimProvider.GetUserRoles();
+
+    public async Task<UserDto?> GetCurrentUserAsync()
+    {
+        if (!IsAuthenticated || string.IsNullOrEmpty(UserEmail))
+            return null;
+
+        try
+        {
+            return await _userService.GetByEmailAsync(UserEmail);
+        }
+        catch (KeyNotFoundException)
+        {
+            return null;
+        }
+    }
 }

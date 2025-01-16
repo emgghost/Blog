@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj": {}
+    "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj": {}
   },
   "projects": {
-    "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj": {
+    "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj",
+        "projectUniqueName": "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj",
         "projectName": "Blog.Domain",
-        "projectPath": "/home/emg/Source/Blog/Blog.Domain/Blog.Domain.csproj",
+        "projectPath": "/home/emg/RiderProjects/Blog/Blog.Domain/Blog.Domain.csproj",
         "packagesPath": "/home/emg/.nuget/packages/",
-        "outputPath": "/home/emg/Source/Blog/Blog.Domain/obj/",
+        "outputPath": "/home/emg/RiderProjects/Blog/Blog.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/emg/.nuget/NuGet/NuGet.Config"
