@@ -12,9 +12,15 @@ using System.IO;
 using Blog.Application.Interfaces;
 using Blog.Application.Mappings;
 using Blog.Application.Services;
+using Blog.Domain.Entities;
 using Blog.Infrastructure.Data;
+using Mapster;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
+// افزودن HealthChecks
+builder.Services.AddHealthChecks();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -22,9 +28,28 @@ builder.Services.AddControllers();
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(BlogProfile));
 
+// Identity
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+    {
+        options.Password.RequireDigit = true;
+        options.Password.RequiredLength = 6;
+        options.Password.RequireNonAlphanumeric = false;
+    })
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+
+// JWT Configuration
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+
+// User Service
+builder.Services.AddScoped<IUserService, UserService>();
 // سرویس‌ها
 builder.Services.AddScoped<IBlogService, BlogService>();
-
+builder.Services.AddMapster();
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 // DbContext
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -94,6 +119,12 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    await DataSeeder.SeedRolesAsync(roleManager);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

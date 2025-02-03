@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Blog.Application.DTOs;
 using Blog.Domain.Entities;
 
@@ -25,8 +26,10 @@ public class BlogProfile : Profile
         CreateMap<Tag, TagReadDto>();
     }
 
-    private static string GenerateSlug(string title)
+    public static string GenerateSlug(string title)
     {
-        // پیاده‌سازی تولید Slug
+        var slug = title.ToLower().Replace(" ", "-");
+        slug = Regex.Replace(slug, @"[^a-z0-9\-]", "");
+        return slug;
     }
 }

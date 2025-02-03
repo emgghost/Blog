@@ -1,10 +1,11 @@
 using Blog.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Infrastructure.Data;
 
-public class AppDbContext : DbContext
-{
+public class AppDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>{
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     
     public DbSet<BlogPost> BlogPosts { get; set; }
@@ -16,6 +17,8 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder); // این خط بسیار مهم است!
+        
         // تنظیمات روابط Many-to-Many
         modelBuilder.Entity<BlogPostCategory>()
             .HasKey(bc => new { bc.BlogPostId, bc.CategoryId });
