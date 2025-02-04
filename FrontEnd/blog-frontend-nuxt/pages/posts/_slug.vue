@@ -33,7 +33,7 @@ export default {
   },
   async fetch() {
     const slug = this.$route.params.slug
-    this.post = await this.$axios.$get(`/posts/${slug}`)
+    this.post = await this.$axios.$get(`/blog/BlogPosts/${slug}`)
   }
 }
 </script>

@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Blog.Application.DTOs;
 using Blog.Application.Interfaces;
 using Blog.Domain.Entities;
@@ -22,6 +23,7 @@ public class BlogService : IBlogService
     {
         var post = _mapper.Map<BlogPost>(createDto);
         
+        post.Slug = GenerateSlug(post.Title);
         // افزودن دسته‌بندی‌ها
         foreach (var categoryId in createDto.CategoryIds)
         {
@@ -50,9 +52,24 @@ public class BlogService : IBlogService
         return _mapper.Map<IEnumerable<BlogPostReadDto>>(posts);
     }
 
-    public Task<BlogPostReadDto> GetPostBySlugAsync(string slug)
+    public async Task<BlogPostReadDto> GetPostBySlugAsync(string slug)
     {
-        throw new NotImplementedException();
+        var post = await _context.BlogPosts
+            .Include(p => p.BlogPostCategories)
+            .ThenInclude(pc => pc.Category)
+            .Include(p => p.BlogPostTags)
+            .ThenInclude(pt => pt.Tag)
+            .SingleOrDefaultAsync(x=>x.Slug == slug);
+
+        return _mapper.Map<BlogPostReadDto>(post);
+    }
+    
+    public static string GenerateSlug(string title)
+    {
+        Console.WriteLine("eeeeeeeeeeeeee");
+        var slug = title.ToLower().Replace(" ", "-");
+        slug = Regex.Replace(slug, @"[^a-z0-9\-]", "");
+        return slug;
     }
 
     // سایر متدها...

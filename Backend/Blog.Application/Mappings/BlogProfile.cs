@@ -28,6 +28,7 @@ public class BlogProfile : Profile
 
     public static string GenerateSlug(string title)
     {
+        Console.WriteLine("eeeeeeeeeeeeee");
         var slug = title.ToLower().Replace(" ", "-");
         slug = Regex.Replace(slug, @"[^a-z0-9\-]", "");
         return slug;
