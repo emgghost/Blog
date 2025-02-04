@@ -3,7 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - blog-frontend-nuxt',
@@ -42,7 +42,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios'],
   axios: {
-    baseURL: 'https://api.yekhesabdar.com/api/blog' // آدرس API شما
+    baseURL: 'http://localhost:5000/api' // پورت پیش‌فرض HTTP
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

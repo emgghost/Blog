@@ -37,7 +37,9 @@ export default {
     }
   },
   async fetch() {
-    this.posts = await this.$axios.$get('/posts')
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+    console.log("salam")
+    this.posts = await this.$axios.$get('blog/BlogPosts')
   }
 }
 </script>
