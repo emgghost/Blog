@@ -16,4 +16,7 @@ public class BlogPostCreateDto
     public List<int> CategoryIds { get; set; } = new();
 
     public List<int> TagIds { get; set; } = new();
+    
+    public string ImageUrl { get; set; } // آدرس عکس در سرور
+
 }

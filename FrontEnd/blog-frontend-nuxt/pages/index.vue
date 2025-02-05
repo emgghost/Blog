@@ -14,6 +14,7 @@
         md="6"
       >
         <v-card>
+          <v-img :src="(nuxtConfig.serverUrl + post.imageUrl)" height="200px"></v-img>
           <v-card-title>{{ post.title }}</v-card-title>
           <v-card-actions>
             <v-btn
@@ -30,7 +31,14 @@
 </template>
 
 <script>
+import nuxtConfig from "@/nuxt.config";
+
 export default {
+  computed: {
+    nuxtConfig() {
+      return nuxtConfig
+    }
+  },
   data() {
     return {
       posts: []

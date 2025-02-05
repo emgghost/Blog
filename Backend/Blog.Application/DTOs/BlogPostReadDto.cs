@@ -8,4 +8,7 @@ public class BlogPostReadDto
     public string Slug { get; set; }
     public List<CategoryReadDto> Categories { get; set; }
     public List<TagReadDto> Tags { get; set; }
+    
+    public string ImageUrl { get; set; } // آدرس عکس در سرور
+
 }

@@ -7,6 +7,7 @@
     ></v-progress-linear>
     <div v-else>
       <v-card>
+        <v-img :src="(nuxtConfig.serverUrl + post.imageUrl)" max-width="500" class="mb-4"></v-img>
         <v-card-title class="text-h3">{{ post.title }}</v-card-title>
         <v-card-text>
           <div class="text-body-1" v-html="post.content"></div>
@@ -25,7 +26,14 @@
 </template>
 
 <script>
+import nuxtConfig from "@/nuxt.config";
+
 export default {
+  computed: {
+    nuxtConfig() {
+      return nuxtConfig
+    }
+  },
   data() {
     return {
       post: null

@@ -30,4 +30,7 @@ public class BlogPost
     // نویسنده (اگر نیاز به احراز هویت دارید)
     public string? AuthorId { get; set; }
     public ApplicationUser? Author { get; set; }
+    
+    [StringLength(500)]
+    public string ImageUrl { get; set; } // آدرس عکس در سرور
 }
