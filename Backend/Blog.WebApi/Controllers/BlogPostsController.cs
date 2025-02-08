@@ -12,32 +12,49 @@ namespace Blog.WebApi.Controllers;
 [ApiController]
 public class BlogPostsController : ControllerBase
 {
-    private readonly IBlogService _blogService;
+    private readonly IBlogPostService _blogPostService;
 
-    public BlogPostsController(IBlogService blogService)
+    public BlogPostsController(IBlogPostService blogPostService)
     {
-        _blogService = blogService;
+        _blogPostService = blogPostService;
     }
 
     [HttpPost]
-    public async Task<ActionResult<BlogPostReadDto>> CreatePost(BlogPostCreateDto createDto)
+    public async Task<ActionResult<BlogPostDto>> CreatePost([FromBody] BlogPostCreateDto createDto)
     {
-        var post = await _blogService.CreatePostAsync(createDto);
+        var post = await _blogPostService.CreatePostAsync(createDto);
         return CreatedAtAction(nameof(GetPostBySlug), new { slug = post.Slug }, post);
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<BlogPostReadDto>>> GetAllPosts()
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdatePost(int id, [FromBody] BlogPostUpdateDto updateDto)
     {
-        var posts = await _blogService.GetAllPostsAsync();
-        return Ok(posts);
+        await _blogPostService.UpdatePostAsync(id, updateDto);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePost(int id)
+    {
+        await _blogPostService.DeletePostAsync(id);
+        return NoContent();
     }
 
     [HttpGet("{slug}")]
-    public async Task<ActionResult<BlogPostReadDto>> GetPostBySlug(string slug)
+    public async Task<ActionResult<BlogPostDto>> GetPostBySlug(string slug)
     {
-        var post = await _blogService.GetPostBySlugAsync(slug);
-        if (post == null) return NotFound();
+        var post = await _blogPostService.GetPostBySlugAsync(slug);
+        if (post == null)
+            return NotFound();
+        
         return Ok(post);
     }
+
+    [HttpGet]
+    public async Task<ActionResult<List<BlogPostDto>>> GetAllPosts()
+    {
+        var posts = await _blogPostService.GetAllPostsAsync();
+        return Ok(posts);
+    }
+    
 }

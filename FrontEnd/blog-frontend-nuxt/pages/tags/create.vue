@@ -1,0 +1,27 @@
+<!-- pages/categories/create.vue -->
+<template>
+  <v-container>
+    <v-form @submit.prevent="createCategory">
+      <v-text-field v-model="category.name" label="نام تگ"></v-text-field>
+      <v-btn type="submit" color="primary">ذخیره</v-btn>
+    </v-form>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      category: {
+        name: ''
+      }
+    }
+  },
+  methods: {
+    async createCategory() {
+      await this.$axios.$post('/tags', this.category)
+      this.$router.push('/tags')
+    }
+  }
+}
+</script>

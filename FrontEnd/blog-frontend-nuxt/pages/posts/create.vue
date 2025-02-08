@@ -44,7 +44,10 @@ export default {
       }
     },
     async createPost() {
-      await this.$axios.$post('/blog/posts', this.post)
+      await this.$axios.$post('/api/blog/posts', {
+        ...this.post,
+        categoryIds: this.selectedCategories
+      })
       this.$router.push('/')
     }
   }

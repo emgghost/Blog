@@ -16,6 +16,9 @@ public class BlogPostDto
     public List<CategoryDto> Categories { get; set; }
     public List<TagDto> Tags { get; set; }
     public List<CommentDto> Comments { get; set; }
+    
+    public string ImageUrl { get; set; } // آدرس عکس در سرور
+
 }
 
 public class AuthorDto

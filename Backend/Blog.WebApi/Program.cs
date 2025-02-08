@@ -44,7 +44,10 @@ builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSet
 // User Service
 builder.Services.AddScoped<IUserService, UserService>();
 // سرویس‌ها
-builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IBlogPostService, BlogPostService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITagService, TagService>();
+
 builder.Services.AddMapster();
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {

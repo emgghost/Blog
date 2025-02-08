@@ -42,9 +42,9 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios'],
   axios: {
-    baseURL: 'http://localhost:5000/api' // پورت پیش‌فرض HTTP
+    baseURL: 'http://localhost:5000/api' // Default HTTP port
   },
-  serverUrl : "https://localhost:5001",
+  serverUrl: "https://localhost:5001",
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -68,5 +68,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['@tinymce/tinymce-vue']
+  },
+  router: {
   }
 }
