@@ -18,7 +18,9 @@ public class BlogProfile : Profile
         
         CreateMap<BlogPostCreateDto, BlogPost>();
         CreateMap<BlogPostUpdateDto, BlogPost>();
-        
+        CreateMap<ApplicationUser, AuthorDto>();
         CreateMap<Category, CategoryDto>();
+        CreateMap<Tag, TagDto>();
+
     }
 }

@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.WebApi.Controllers;
 
-[Route("api/blog/[controller]")]
+[Route("api/[controller]")]
 [ApiController]
-public class BlogPostsController : ControllerBase
+public class PostsController : ControllerBase
 {
     private readonly IBlogPostService _blogPostService;
 
-    public BlogPostsController(IBlogPostService blogPostService)
+    public PostsController(IBlogPostService blogPostService)
     {
         _blogPostService = blogPostService;
     }

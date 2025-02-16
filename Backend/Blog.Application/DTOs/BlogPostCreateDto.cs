@@ -18,5 +18,7 @@ public class BlogPostCreateDto
     public List<int> TagIds { get; set; } = new();
     
     public string ImageUrl { get; set; } // آدرس عکس در سرور
+    
+    public string? AuthorId { get; set; }
 
 }

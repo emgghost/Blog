@@ -6,6 +6,7 @@ using Blog.Application.Interfaces;
 using Blog.Domain.Entities;
 using MapsterMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,17 +18,19 @@ public class UserService : IUserService
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly IMapper _mapper;
     private readonly JwtSettings _jwtSettings;
-
+    private readonly ILogger<UserService> _logger;
     public UserService(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
         IMapper mapper,
-        IOptions<JwtSettings> jwtSettings)
+        IOptions<JwtSettings> jwtSettings,
+        ILogger<UserService> logger)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _mapper = mapper;
         _jwtSettings = jwtSettings.Value;
+        _logger = logger;
     }
 
     public async Task<UserResponseDto> RegisterAsync(UserRegisterDto registerDto)
@@ -36,9 +39,15 @@ public class UserService : IUserService
         user.UserName = registerDto.Email; // یا یک نام کاربری جداگانه
         
         var result = await _userManager.CreateAsync(user, registerDto.Password);
-        
         if (!result.Succeeded)
-            throw new ApplicationException("خطا در ثبت‌نام: " + string.Join(", ", result.Errors));
+        {
+            foreach (var error in result.Errors)
+            {
+                _logger.LogError($"Registration error: {error.Code} - {error.Description}");
+            }
+            throw new ApplicationException($"خطا در ثبت‌نام: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+        }
+
         
         // اختصاص نقش پیش‌فرض
         await _userManager.AddToRoleAsync(user, "User");
