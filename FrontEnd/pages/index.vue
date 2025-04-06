@@ -1,7 +1,5 @@
 <template>
-  <v-container fluid class="blog-container">
-    <h1 class="text-h4 mb-6 text-center font-weight-bold">📖 وبلاگ</h1>
-
+  <div class="w-full h-full flex justify-center">
     <!-- وضعیت بارگذاری -->
     <v-row v-if="!status">
       <v-col v-for="n in 4" :key="n" cols="12" md="6">
@@ -15,29 +13,33 @@
     </v-alert>
 
     <!-- نمایش لیست پست‌ها -->
-    <v-row v-else>
-      <v-col v-for="post in posts" :key="post.id" cols="12" md="6">
+    <div v-else class="!w-full !grid !grid-cols-2 gap-4">
+      <div v-for="post in posts" :key="post.id" class="w-full">
         <v-card class="elevation-3 blog-card">
           <v-img :src="fileUrl + post.imageUrl" height="200px" cover class="rounded-t-lg"></v-img>
           <v-card-title @click="goToPost(post.slug)" class="text-primary font-weight-bold text-truncate">
             {{ post.title }}
           </v-card-title>
           <v-card-subtitle class="text-grey-darken-1">
-            🗓 {{ new Date(post.createdAt).toLocaleDateString("fa-IR") }}
+            {{ new Date(post.createdAt).toLocaleDateString("fa-IR") }}
           </v-card-subtitle>
           <v-card-text class="text-truncate">
             {{ post.description }}
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" :to="`/posts/${post.slug}`" variant="flat" class="w-100">
-              مشاهد
-            <v-icon end>mdi-chevron-left</v-icon>
-            </v-btn>
+            <q-btn
+                class="w-full bg-[#00524B] !text-white my-auto h-[40px] shrink-0 rounded-lg flex"
+                flat
+                label="ادامه مطلب"
+                icon-right="arrow_back"
+                push
+                @click="router.push('/posts/' + post.slug)"
+            />
           </v-card-actions>
         </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>

@@ -1,0 +1,30 @@
+@import "base/font.scss";
+
+* {
+  font-family: var(--default-font);
+  font-weight: 600;
+  direction: rtl;
+  text-align: right;
+}
+
+code, kbd, pre, samp {
+  font-family: var(--default-font) !important;
+}
+
+html, body {
+  direction: rtl !important;
+}
+
+:root {
+  --q-primary: #00524B;
+  --q-secondary: #26A69A;
+  --q-accent: #4881F1;
+  --q-positive: #21BA45;
+  --q-negative: #D26363;
+  --q-info: #E4E7EC;
+  --q-warning: #0D9488;
+  --q-dark: theme("colors.teal.800");
+  --q-dark-page: theme("colors.teal.900");
+  --animate-delay: 0.2s;
+  --default-font: IranSansX, "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif
+}

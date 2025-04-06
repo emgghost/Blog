@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .dir-rtl {
+        content: "fdff";
+        direction: rtl;
+    }
+
+    .dir-ltr {
+        content: "fdff";
+        direction: ltr;
+    }
+}
