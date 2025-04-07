@@ -42,7 +42,7 @@ const route = useRoute()
 <template>
   <v-app>
     <v-app-bar class="!shadow-[0_2px_8px_0px_rgba(99,99,99,0.1)] !bg-[#00524B] !p-3 !w-full !h-[78px] !flex !justify-between !items-center !shrink-0">
-      <span class="text-white text-justify">وبلاگ یک حسابدار</span>
+      <span class="text-white text-justify text-bold text-[18px]">وبلاگ یک حسابدار</span>
       <v-spacer></v-spacer>
       <img
           alt="yek hesabdar"
