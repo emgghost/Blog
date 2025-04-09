@@ -20,6 +20,7 @@
     "postcss": "^8.5.3",
     "quasar": "^2.18.1",
     "sass": "^1.86.3",
+    "swiper": "^11.2.6",
     "vue-server-renderer": "^2.7.16",
     "vue-template-compiler": "^2.7.16",
     "vuetify": "^3.8.0"

@@ -13,10 +13,10 @@
     </v-alert>
 
     <!-- نمایش لیست پست‌ها -->
-    <div v-else class="!w-full !grid !grid-cols-2 gap-4">
-      <div v-for="post in posts" :key="post.id" class="w-full">
-        <v-card class="elevation-3 blog-card">
-          <v-img :src="fileUrl + post.imageUrl" height="200px" cover class="rounded-t-lg"></v-img>
+    <div v-else class="!w-full !grid !grid-cols-3 gap-4">
+      <div v-for="(post,index) in posts" :key="post.id" class="w-full">
+        <v-card class="elevation-3 blog-card group" v-if="showAll ? true : index<6">
+          <v-img :src="fileUrl + post.imageUrl" height="200px" cover class="rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all "></v-img>
           <v-card-title @click="goToPost(post.slug)" class="text-[#00524B] !font-bold">
             {{ post.title }}
           </v-card-title>
@@ -38,11 +38,12 @@
 <!--            />-->
             <div class="group cursor-pointer w-full flex items-center px-4 justify-between !h-[52px]" @click="router.push('/posts/' + post.slug)">
               <span class="group-hover:!text-[#0D9488]">ادامه مطلب</span>
-              <q-icon name="arrow_back" class="group-hover:!text-[#0D9488]"/>
+              <q-icon name="arrow_back" class="group-hover:!text-[#0D9488] !text-[18px]"/>
             </div>
           </v-card-actions>
         </v-card>
       </div>
+      <div @click="showMoreFn()" v-if="posts.length>6 && !showAll" class="transition-all hover:text-[#0D9488] duration-300 ease-in-out hover:-translate-y-0.5 cursor-pointer col-span-full flex items-center justify-center bg-white shadow-[0px_2px_13px_0px_rgba(0,0,0,0.02)] rounded-full p-4">نمایش تمامی مطالب</div>
     </div>
   </div>
 </template>
@@ -53,6 +54,10 @@ import moment from 'moment-jalaali'
 
 const { request, fileUrl } = useApi();
 const { data: posts, status, error } = await useApi().getPosts();
+const showAll = ref(false);
+const showMoreFn = () =>{
+  showAll.value = true;
+}
 const router = useRouter();
 const goToPost = (slug) => {
   router.push(`/posts/${slug}`);
@@ -64,17 +69,15 @@ const goToPost = (slug) => {
   max-width: 1200px;
   margin: auto;
 }
-
 .blog-card {
   transition: transform 0.3s ease-in-out;
   border-radius: 12px;
   overflow: hidden;
+  @apply shadow-[0px_2px_13px_0px_rgba(0,0,0,0.02)]
+
 }
 
-.blog-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+
 
 .v-card-title {
   white-space: nowrap;
