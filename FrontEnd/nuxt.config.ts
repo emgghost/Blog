@@ -8,8 +8,8 @@ export default defineNuxtConfig({
 
     app: {
         head: {
-            titleTemplate: '%s - blog-frontend-nuxt',
-            title: 'بلاگ یک حسابدار',
+            titleTemplate: '%s',
+            title: 'وبلاگ یک حسابدار',
             htmlAttrs: {
                 lang: 'en'
             },

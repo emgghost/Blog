@@ -179,7 +179,7 @@ const _kdRSPAtpVL = (function(nitro) {
 
 const rootDir = "D:/Blog/FrontEnd";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"}],"style":[],"script":[],"noscript":[],"titleTemplate":"%s - blog-frontend-nuxt","title":"بلاگ یک حسابدار","htmlAttrs":{"lang":"fa-IR","dir":"rtl"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"}],"style":[],"script":[],"noscript":[],"titleTemplate":"%s","title":"وبلاگ یک حسابدار","htmlAttrs":{"lang":"fa-IR","dir":"rtl"}};
 
 const appRootTag = "div";
 

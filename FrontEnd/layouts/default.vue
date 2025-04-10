@@ -59,7 +59,7 @@ const toggleSubMenu = () => {
 const menuList = [
   { label: 'خانه', url: '/', show: true },
   { label: 'محصولات', url: null, show: true,subList: [{
-      label:'نرم افزار واسط یک حسابدار',url:'/kit/products'
+      label:'نرم افزار واسط یک حسابدار',url:'https://yekhesabdar.com/kit/products'
     }
     ] },
   {
@@ -67,19 +67,19 @@ const menuList = [
     url: null,
     show: true,
     subList: [
-      { label: 'معرفی نرم افزار واسط یک حسابدار', url: '/kit/about-app' },
-      { label: 'آموزش های نرم افزار واسط یک حسابدار', url: '/kit/tutorials' },
-      { label: 'صدور csr و کلید عمومی و خصوصی', url: '/kit/key-generate' },
-      { label: 'صدور کلید عمومی و خصوصی بر اساس csr', url: '/kit/key-with-csr' },
-      { label: 'استعلام کد اقتصادی', url: '/kit/economic' },
-      { label: 'سامانه هوشمند شناسه کالا / خدمات', url: '/kit/stuff' },
-      { label: 'سوالات متداول سامانه مودیان', url: '/kit/faq-moadian' }
+      { label: 'معرفی نرم افزار واسط یک حسابدار', url: 'https://yekhesabdar.com/kit/about-app' },
+      { label: 'آموزش های نرم افزار واسط یک حسابدار', url: 'https://yekhesabdar.com/kit/tutorials' },
+      { label: 'صدور csr و کلید عمومی و خصوصی', url: 'https://yekhesabdar.com/kit/key-generate' },
+      { label: 'صدور کلید عمومی و خصوصی بر اساس csr', url: 'https://yekhesabdar.com/kit/key-with-csr' },
+      { label: 'استعلام کد اقتصادی', url: 'https://yekhesabdar.com/kit/economic' },
+      { label: 'سامانه هوشمند شناسه کالا / خدمات', url: 'https://yekhesabdar.com/kit/stuff' },
+      { label: 'سوالات متداول سامانه مودیان', url: 'https://yekhesabdar.com/kit/faq-moadian' }
     ]
   },
   // { label: 'سوالات متداول', url: '/#faq', show: true },
   // { label: 'بلاگ', url: '/kit/blog', show: true },
-  { label: 'خدمات ما', url: '/kit/services', show: true },
-  { label: 'درباره ما', url: '/kit/about-us', show: true }
+  { label: 'خدمات ما', url: 'https://yekhesabdar.com/kit/services', show: true },
+  { label: 'درباره ما', url: 'https://yekhesabdar.com/kit/about-us', show: true }
 ]
 watch(()=>route.name,
     ()=>{
@@ -108,24 +108,28 @@ watch(()=>route.name,
         </div>
 
         <!-- Menu List (Visible on large screens) -->
-        <div class="flex justify-between items-center menu max-lg:!hidden">
-          <ul class="container max-w-[90vw] 2xl:max-w-[65vw] mx-auto">
+        <div class="flex justify-between items-center mx-auto menu max-lg:!hidden">
+          <ul class="container max-w-[90vw] 2xl:max-w-[65vw] pe-20 mx-auto">
             <template v-for="item in menuList">
               <li v-if="item.show">
-                <nuxt-link v-if="!!item.url" :to="item.url" class="item">
+                <nuxt-link v-if="!!item.url && item.url === '/'" @click="navigateTo(item.url,{external:true})" class="item">
                   {{ item.label }}
                   <q-icon v-if="item.subList" name="expand_more" />
                 </nuxt-link>
-                <span v-else class="item cursor-pointer">
+                <a v-if="!!item.url && item.url !== '/'" target="_blank" :href="item.url"  class="item">
+                  {{ item.label }}
+                  <q-icon v-if="item.subList" name="expand_more" />
+                </a>
+                <span v-else-if="item.url !== '/'" class="item cursor-pointer">
             {{ item.label }}
             <q-icon v-if="item.subList" name="expand_more" />
           </span>
-                <div v-if="!!item.subList" class=" !top-0">
+                <div v-if="!!item.subList" class="sub-menu !top-0">
                   <ul>
                     <li v-for="sub in item.subList">
-                      <lazy-nuxt-link v-if="!!sub.url" :to="sub.url" class="item">
+                      <a v-if="!!sub.url" :href="sub.url" target="_blank" class="item">
                         {{ sub.label }}
-                      </lazy-nuxt-link>
+                      </a>
                       <span v-else class="item" v-text="sub.label"></span>
                     </li>
                   </ul>
@@ -214,6 +218,10 @@ watch(()=>route.name,
 :deep(.mySwiper) {
   overflow-y: visible !important;
   padding-bottom: 100px !important;
+}
+
+:deep(.v-toolbar__content) {
+  overflow: visible !important;
 }
 
 :deep(.swiper-slide) {
