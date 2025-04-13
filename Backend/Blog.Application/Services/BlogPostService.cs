@@ -125,7 +125,12 @@ public async Task<BlogPost> UpdatePostAsync(int id, BlogPostUpdateDto updateDto)
             .ThenInclude(pt => pt.Tag)
             .Include(p => p.Author)
             .FirstOrDefaultAsync(p => p.Slug == slug);
-        
+
+        if (post != null)
+        {
+            post.ReadCount++;
+            await _context.SaveChangesAsync();
+        }
         return _mapper.Map<BlogPostDto>(post);
     }
 

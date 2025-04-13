@@ -33,4 +33,6 @@ public class BlogPost
     
     [StringLength(500)]
     public string ImageUrl { get; set; } // آدرس عکس در سرور
+
+    public long ReadCount { get; set; } = 0;
 }

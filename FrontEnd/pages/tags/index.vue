@@ -31,21 +31,16 @@
 </template>
 
 <script>
-import nuxtConfig from "@/nuxt.config";
-import api from "useApi";
+import {useApi} from "../../useApi";
 
 export default {
-  computed: {
-    nuxtConfig() {
-      return nuxtConfig
-    }
-  },
   data() {
     return {
       posts: []
     }
   },
   async fetch() {
+    const api = useApi()
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     console.log("salam")
     this.posts = await api.getPosts()

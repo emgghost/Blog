@@ -40,9 +40,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-
-  ],
+  modules: ['@nuxtjs/tailwindcss'],
 
   runtimeConfig: {
     public: {
@@ -74,5 +72,3 @@ export default {
 
   compatibilityDate: '2025-02-11'
 };
-
-

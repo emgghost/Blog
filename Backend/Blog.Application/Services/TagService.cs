@@ -67,5 +67,21 @@ public class TagService : ITagService
         return;
     }
 
+    public async Task<GetPostByTagDto> GetPostByTagAsync(string slug)
+    {
+        var tag = await _context.Tags
+            .Include(t => t.BlogPostTags)
+            .ThenInclude(pt => pt.BlogPost)
+            .ThenInclude(p => p.BlogPostCategories)
+            .ThenInclude(pc => pc.Category)
+            .Include(t => t.BlogPostTags)
+            .ThenInclude(pt => pt.BlogPost)
+            .SingleOrDefaultAsync(x => x.Slug == slug);
+        
+        var res = _mapper.Map<GetPostByTagDto>(tag);
+        res.BlogPosts = _mapper.Map<List<BlogPostDto>>(tag.BlogPostTags.Select(x => x.BlogPost));
+        return res;
+    }
+
     // سایر متدها (Update, Delete, GetById)
 }

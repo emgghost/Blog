@@ -13,12 +13,14 @@
     "@vueup/vue-quill": "^1.2.0",
     "core-js": "^3.25.3",
     "nuxt": "^3.15.4",
+    "tailwind": "^4.0.0",
     "vue-server-renderer": "^2.7.16",
     "vue-template-compiler": "^2.7.16",
     "vuetify": "^3.7.11"
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",
+    "@nuxtjs/tailwindcss": "^6.13.1",
     "@nuxtjs/vuetify": "^1.12.3"
   }
 }

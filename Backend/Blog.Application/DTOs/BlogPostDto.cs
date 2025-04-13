@@ -19,6 +19,7 @@ public class BlogPostDto
     
     public string ImageUrl { get; set; } // آدرس عکس در سرور
 
+    public long ReadCount { get; set; } = 0;
 }
 
 public class AuthorDto
