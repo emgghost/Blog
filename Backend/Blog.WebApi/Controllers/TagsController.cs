@@ -9,6 +9,14 @@ namespace Blog.WebApi.Controllers;
 [ApiController]
 public class TagsController(ITagService tagService) : ControllerBase
 {
+    [HttpGet("{slug}")]
+    public async Task<ActionResult<List<BlogPostDto>>> GetPostByTag(string slug)
+    {
+        var post = await tagService.GetPostByTagAsync(slug);
+
+        return Ok(post);
+    }
+    
     [HttpGet]
     public async Task<ActionResult<List<TagDto>>> GetAll()
     {

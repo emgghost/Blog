@@ -75,6 +75,9 @@ export const useApi = () => {
     return request(`/tags/${id}`, { method: 'DELETE' });
   };
 
+  const getPostByTag = (slug) => {
+    return request(`/tags/${slug}`, { method: 'GET' });
+  };
   const getTag = (id) => {
     return request(`/tags/${id}`, { method: 'GET' });
   }
@@ -143,6 +146,7 @@ export const useApi = () => {
     updateUserRole,
     getCategory,
     getTag,
-    updateTag
+    updateTag,
+    getPostByTag
   };
 };

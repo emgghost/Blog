@@ -9,4 +9,5 @@ public interface ITagService
     Task<TagDto> CreateAsync(TagCreateDto createDto);
     Task<TagDto> UpdateAsync(int id, TagCreateDto updateDto);
     Task DeleteAsync(int id);
+    Task<GetPostByTagDto> GetPostByTagAsync(string slug);
 }

@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import { api } from 'useApi'
+import {useApi} from "../../useApi";
+
 export default {
   data() {
     return {
@@ -22,7 +23,8 @@ export default {
     }
   },
   async fetch() {
-    this.tags = await api.getTags()
+    const {getTags} = useApi()
+    this.tags = await getTags()
   }
 }
 </script>
