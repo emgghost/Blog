@@ -4,7 +4,7 @@
     > li {
       @apply relative items-center;
       > .item {
-        @apply flex items-center p-2 text-white rounded-md mx-2 transition-all duration-300 gap-2;
+        @apply flex items-center p-2 text-black rounded-md mx-2 transition-all duration-300 gap-2;
         &.router-link-exact-active, &:hover {
           @apply text-[#01FF29];
         }
@@ -34,8 +34,6 @@
 
             .item {
               @apply px-8 py-2 flex items-center transition-all duration-300 justify-center;
-
-
               &:hover {
                 @apply bg-green-700 text-white;
               }

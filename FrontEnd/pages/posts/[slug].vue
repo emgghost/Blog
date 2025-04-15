@@ -1,8 +1,27 @@
 <template>
   <div class="w-full h-full grid grid-cols-4 gap-4">
-    <div class="col-span-3">
+    <div class="col-span-3 max-md:col-span-full">
       <q-skeleton v-if="!status" height="400px" square class="full-width"/>
       <div v-else class="w-full p-1">
+        <!-- Blog Title -->
+        <div class="text-h4 text-primary text-center q-my-md">
+          {{ post.title }}
+        </div>
+        <!-- Blog Author -->
+        <div class="flex gap-2 row">
+          <span v-if="!post.author" class="text-[#888f96]">
+             نویسنده :
+          </span>
+          <span v-if="!post.author">
+             {{ post.author}}
+          </span>
+          <span v-if="!post.author" class="text-[#888f96]">
+             ــــ
+          </span>
+          <span v-if="!!post.createdAt" class="text-[#888f96]">
+            {{ new moment(post.createdAt).format('jD jMMMM jYYYY')}}
+          </span>
+        </div>
         <!-- Blog Image -->
         <q-img
             :src="fileUrl + post.imageUrl"
@@ -10,58 +29,62 @@
             style="height: 400px; object-fit: cover"
             :ratio="16/9"
         />
-
-        <!-- Blog Title -->
-        <div class="text-h4 text-primary text-center q-my-md">
-          {{ post.title }}
+        <!-- Blog Stats -->
+        <div class="q-my-md w-fit px-4 flex border bg-white rounded-full justify-center items-center gap-2">
+          <div class="flex gap-1 !border-l px-3 py-2 border-gray-200 items-center">
+            <q-icon name="comment" class="text-[18px] text-primary"/>
+            <span class="text-[18px] text-[#888f96]">{{post.comments.length}}</span>
+          </div>
+          <div class="flex gap-1 px-3 py-2 items-center">
+            <q-icon name="visibility" class="text-[18px] text-[#219e00]"/>
+            <span class="text-[18px] text-[#888f96]">{{post.readCount}}</span>
+          </div>
         </div>
-
         <!-- Blog Content -->
         <div class="q-my-md text-body1 blog-content" v-html="post.content"></div>
 
         <!-- Categories -->
-        <div class="row justify-center q-mt-md">
+        <div class="row items-center q-mt-md">
+          دسته بندی ها :
           <q-chip
               v-for="category in post.categories"
               :key="category.id"
-              color="primary"
-              class="q-ma-sm blog-chip"
-              outline
+              class="q-ma-sm blog-chip bg-white rounded-full hover:!bg-orange-600 transition-all duration-200 cursor-pointer hover:text-white"
           >
             {{ category.name }}
           </q-chip>
         </div>
       </div>
-      <div class="w-full h-[500px] grid grid-cols-3 gap-2">
+      <div class="w-full min-h-[500px] grid grid-cols-3 gap-2 max-md:grid-cols-2 max-sm:grid-cols-1">
         <div class="flex w-full items-center col-span-full ">
           <h1 class="text-bold text-[24px] w-fit">ممکن است علاقه داشته باشید</h1>
           <q-icon name="arrow_back" class="text-[24px]"/>
         </div>
-        <div v-for="(post,index) in posts" :key="post.id" class="col-span-1">
-          <v-card class="elevation-3 blog-card group" v-if="index < 3">
-            <v-img :src="fileUrl + post.imageUrl" height="200px" cover
+        <div v-for="(item,index) in posts.filter((blog)=>blog.id !== post.id)" :key="item.id" class="col-span-1">
+          <v-card class="elevation-3 blog-card group" v-if="index < 3 && item.id!==post.id">
+            <v-img :src="fileUrl + item.imageUrl" height="200px" cover
                    class="rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all "></v-img>
-            <v-card-title @click="goToPost(post.slug)" class="text-[#00524B] !font-bold">
-              {{ post.title }}
+            <v-card-title @click="goToPost(item.slug)" class="text-[#00524B] !font-bold">
+              {{ item.title }}
             </v-card-title>
-            <v-card-subtitle class="text-grey-darken-1">
-              {{ new moment(post.createdAt).format('jD jMMMM jYYYY') }}
+            <v-card-subtitle class="flex gap-2">
+              {{ new moment(item.createdAt).format('jD jMMMM jYYYY') }}
+              <div class="flex gap-1">
+                <q-icon name="comment" class="text-[18px] text-primary"/>
+                {{item.comments.length}}
+              </div>
+              <div class="flex gap-1">
+                <q-icon name="visibility" class="text-[18px] text-[#219e00]"/>
+                {{item.readCount}}
+              </div>
             </v-card-subtitle>
             <v-card-text class="text-truncate">
-              {{ post.description }}
+              {{ item.description }}
             </v-card-text>
             <q-separator/>
             <v-card-actions class="!p-0">
-              <!--            <q-btn-->
-              <!--                class="w-full bg-[#00524B] !text-white my-auto h-[40px] shrink-0 rounded-lg flex"-->
-              <!--                flat-->
-              <!--                label="ادامه مطلب"-->
-              <!--                icon-right="arrow_back"-->
-              <!--                push-->
-              <!--                @click="router.push('/posts/' + post.slug)"-->
-              <!--            />-->
               <div class="group cursor-pointer w-full flex items-center px-4 justify-between !h-[52px]"
-                   @click="routered.push('/posts/' + post.slug)">
+                   @click="goToPost(item.slug)">
                 <span class="group-hover:!text-[#0D9488]">ادامه مطلب</span>
                 <q-icon name="arrow_back" class="group-hover:!text-[#0D9488] !text-[18px]"/>
               </div>
@@ -70,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div class="post-sidebar col-span-1 w-full h-full">
+    <div class="post-sidebar max-md:col-span-full col-span-1 w-full h-full">
       <q-card>
         <q-tabs
             v-model="tab"

@@ -95,7 +95,7 @@ watch(()=>route.name,
           <!-- Hamburger Icon for small screens -->
           <div class="flex w-fit h-full justify-center items-center lg:hidden relative">
             <lazy-q-icon
-                class="icon text-2xl pe-2 transition-transform duration-300 hidden max-lg:!block"
+                class="icon text-white text-2xl p-2 transition-transform duration-300 hidden max-lg:!block"
                 :class="isMenuOpen ? 'translate-x-[250px]' : 'translate-x-0'"
                 name="menu"
                 @click="toggleMenu()"
@@ -112,7 +112,7 @@ watch(()=>route.name,
           <ul class="container max-w-[90vw] 2xl:max-w-[65vw] pe-20 mx-auto">
             <template v-for="item in menuList">
               <li v-if="item.show">
-                <nuxt-link v-if="!!item.url && item.url === '/'" @click="navigateTo(item.url,{external:true})" class="item">
+                <nuxt-link v-if="!!item.url && item.url === '/'" @click="navigateTo(item.url,{external:true})" class="item cursor-pointer">
                   {{ item.label }}
                   <q-icon v-if="item.subList" name="expand_more" />
                 </nuxt-link>
@@ -146,7 +146,7 @@ watch(()=>route.name,
           <ul class="container flex flex-col items-start px-6 py-6 text-black gap-2">
             <template v-for="item in menuList">
               <li v-if="item.show" class="w-full">
-                <nuxt-link v-if="!!item.url" :to="item.url" class="!h-[48px] item w-full" :class="route.path===item.url ? 'bg-primary rounded-lg !text-white':'border'">
+                <nuxt-link v-if="!!item.url" :to="item.url" class="!h-[48px] item w-full" :class="route.path===item.url ? 'bg-teal-800 rounded-lg !text-white':'border'">
                   {{ item.label }}
                   <q-icon v-if="item.subList" name="expand_more" />
                 </nuxt-link>

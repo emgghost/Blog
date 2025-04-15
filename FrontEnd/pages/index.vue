@@ -13,29 +13,29 @@
     </v-alert>
 
     <!-- نمایش لیست پست‌ها -->
-    <div v-else class="!w-full !grid !grid-cols-3 gap-4">
+    <div v-else class="!w-full !grid !grid-cols-3 gap-4 max-md:!grid-cols-2 max-sm:!grid-cols-1">
       <div v-for="(post,index) in posts" :key="post.id" class="w-full">
         <v-card class="elevation-3 blog-card group" v-if="showAll ? true : index<6">
           <v-img :src="fileUrl + post.imageUrl" height="200px" cover class="rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all "></v-img>
           <v-card-title @click="goToPost(post.slug)" class="text-[#00524B] !font-bold">
             {{ post.title }}
           </v-card-title>
-          <v-card-subtitle class="text-grey-darken-1">
+          <v-card-subtitle class="text-grey-darken-1 flex gap-2">
             {{ new moment(post.createdAt).format('jD jMMMM jYYYY')}}
+            <div class="flex gap-1">
+              <q-icon name="comment" class="text-[18px] text-primary"/>
+              {{post.comments.length}}
+            </div>
+            <div class="flex gap-1">
+            <q-icon name="visibility" class="text-[18px] text-[#219e00]"/>
+            {{post.readCount}}
+            </div>
           </v-card-subtitle>
           <v-card-text class="text-truncate">
             {{ post.description }}
           </v-card-text>
           <q-separator/>
           <v-card-actions class="!p-0">
-<!--            <q-btn-->
-<!--                class="w-full bg-[#00524B] !text-white my-auto h-[40px] shrink-0 rounded-lg flex"-->
-<!--                flat-->
-<!--                label="ادامه مطلب"-->
-<!--                icon-right="arrow_back"-->
-<!--                push-->
-<!--                @click="router.push('/posts/' + post.slug)"-->
-<!--            />-->
             <div class="group cursor-pointer w-full flex items-center px-4 justify-between !h-[52px]" @click="router.push('/posts/' + post.slug)">
               <span class="group-hover:!text-[#0D9488]">ادامه مطلب</span>
               <q-icon name="arrow_back" class="group-hover:!text-[#0D9488] !text-[18px]"/>
