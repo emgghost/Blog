@@ -1,0 +1,46 @@
+.menu {
+  > ul {
+    @apply flex items-center;
+    > li {
+      @apply relative items-center;
+      > .item {
+        @apply flex items-center p-2 text-black rounded-md mx-2 transition-all duration-300 gap-2;
+        &.router-link-exact-active, &:hover {
+          @apply text-[#01FF29];
+        }
+        &:hover {
+          + .sub-menu {
+            @apply visible opacity-100;
+          }
+        }
+      }
+
+      .sub-menu {
+        //invisible opacity-0 -translate-y-3
+        @apply transition-all duration-100 top-full absolute left-1/2 -translate-x-1/2 min-w-24 w-max mt-12 invisible opacity-0;
+
+        &:hover {
+          @apply visible opacity-100;
+        }
+
+        ul {
+          @apply bg-white rounded-md text-teal-800 shadow-md overflow-hidden;
+          li {
+            &:not(:last-child) {
+              .item {
+                @apply border-b;
+              }
+            }
+
+            .item {
+              @apply px-8 py-2 flex items-center transition-all duration-300 justify-center;
+              &:hover {
+                @apply bg-green-700 text-white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

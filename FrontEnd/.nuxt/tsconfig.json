@@ -92,6 +92,9 @@
       "public": [
         "../public"
       ],
+      "public/*": [
+        "../public/*"
+      ],
       "#app": [
         "../node_modules/nuxt/dist/app"
       ],
@@ -106,6 +109,12 @@
       ],
       "#imports": [
         "./imports"
+      ],
+      "#tailwind-config": [
+        "./tailwind/expose"
+      ],
+      "#tailwind-config/*": [
+        "./tailwind/expose/*"
       ],
       "#app-manifest": [
         "./manifest/meta/dev"
@@ -154,6 +163,8 @@
     "../**/*",
     "../node_modules/@nuxtjs/tailwindcss/runtime",
     "../node_modules/@nuxtjs/tailwindcss/dist/runtime",
+    "../node_modules/nuxt-quasar-ui/runtime",
+    "../node_modules/nuxt-quasar-ui/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
@@ -166,10 +177,13 @@
     "../../node_modules",
     "../node_modules/nuxt/node_modules",
     "../node_modules/@nuxtjs/tailwindcss/node_modules",
+    "../node_modules/nuxt-quasar-ui/node_modules",
     "../node_modules/@nuxt/devtools/node_modules",
     "../node_modules/@nuxt/telemetry/node_modules",
     "../node_modules/@nuxtjs/tailwindcss/runtime/server",
     "../node_modules/@nuxtjs/tailwindcss/dist/runtime/server",
+    "../node_modules/nuxt-quasar-ui/runtime/server",
+    "../node_modules/nuxt-quasar-ui/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",

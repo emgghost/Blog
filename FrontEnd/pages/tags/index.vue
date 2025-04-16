@@ -42,7 +42,6 @@ export default {
   async fetch() {
     const api = useApi()
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-    console.log("salam")
     this.posts = await api.getPosts()
   }
 }
