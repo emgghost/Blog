@@ -1,8 +1,10 @@
 <!-- pages/admin/posts/index.vue -->
 <template>
-  <v-container>
-    <v-btn to="/admin/posts/create" color="primary">ایجاد پست جدید</v-btn>
-
+  <v-container class="border rounded-md">
+    <v-btn to="/admin/posts/create" color="success">
+      <v-icon icon="mdi-plus"/>
+      ایجاد پست جدید
+    </v-btn>
     <v-table>
       <thead>
         <tr>
@@ -18,12 +20,11 @@
           <td>{{ post.author?.displayName || 'ناشناس' }}</td>
           <td>{{ new Date(post.createdAt).toLocaleDateString('fa-IR') }}</td>
           <td>
-            <v-btn :to="`/admin/posts/edit?slug=${post.slug}`" icon>
-              <v-icon icon="mdi-pencil" color="red"/>
+            <v-btn :to="`/admin/posts/edit?slug=${post.slug}`" icon class="ml-1">
+              <v-icon icon="mdi-pencil" color="blue"/>
             </v-btn>
-
             <v-btn @click="deletePost(post.id)" icon>
-              <v-icon>mdi-delete</v-icon>
+              <v-icon icon="mdi-delete" color="red"/>
             </v-btn>
           </td>
         </tr>

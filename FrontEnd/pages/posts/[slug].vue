@@ -8,7 +8,7 @@
           {{ post.title }}
         </div>
         <!-- Blog Author -->
-        <div class="flex gap-2 row">
+        <div class="flex gap-2 row mb-2">
           <span v-if="!post.author" class="text-[#888f96]">
              نویسنده :
           </span>
@@ -26,8 +26,6 @@
         <q-img
             :src="fileUrl + post.imageUrl"
             class="blog-image"
-            style="height: 400px; object-fit: cover"
-            :ratio="16/9"
         />
         <!-- Blog Stats -->
         <div class="q-my-md w-fit px-4 flex border bg-white rounded-full justify-center items-center gap-2">
@@ -163,8 +161,8 @@ const goToPost = (slug) => {
 }
 
 .blog-image {
-  height: 400px;
-  object-fit: cover;
+  max-height: 400px;
+  object-fit: contain;
   border-radius: 12px 12px 0 0;
 }
 
