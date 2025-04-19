@@ -1,11 +1,12 @@
 <template>
-  <v-container>
+  <v-container class="border rounded-lg">
     <v-form @submit.prevent="createPost">
-      <div style="display: flex; align-items: center;">
-      <v-img v-if="post.imageUrl" :src="fileUrl + post.imageUrl" max-width="200" style="align-items: center;"></v-img>
+      <div class="flex items-center">
+      <v-img v-if="post.imageUrl" :src="fileUrl + post.imageUrl" class="mb-4" max-width="200" style="align-items: center;"></v-img>
       </div>
       <v-file-input
         label="عکس پست"
+        variant="outlined"
         @change="uploadImage"
         accept="image/*"
         :loading="isUploading"
@@ -14,6 +15,7 @@
       <v-text-field 
         v-model="post.title" 
         label="عنوان"
+        variant="outlined"
         :disabled="isSubmitting"
         required
       ></v-text-field>
@@ -21,6 +23,7 @@
         v-model="post.categoryIds"
         :items="categories"
         item-title="name"
+        variant="outlined"
         item-value="id"
         label="دسته‌بندی‌ها"
         multiple
@@ -33,6 +36,7 @@
         :items="tags"
         item-title="name"
         item-value="id"
+        variant="outlined"
         label="برچسب‌ها"
         multiple
         chips
@@ -40,15 +44,14 @@
         :disabled="isSubmitting || isLoadingTags"
       ></v-select>
       <RichTextEditor 
-        v-model="post.content" 
-        :disabled="isSubmitting"
+        v-model="post.content"
       />
       <v-btn 
         type="submit" 
         color="primary" 
         class="mt-4"
         :loading="isSubmitting"
-        :disabled="isSubmitting || !post.title || !post.content"
+        :disabled="!post.title || !post.content"
       >
         ایجاد پست
       </v-btn>

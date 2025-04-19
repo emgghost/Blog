@@ -109,7 +109,7 @@ watch(()=>route.name,
 
         <!-- Menu List (Visible on large screens) -->
         <div class="flex justify-between items-center mx-auto menu max-lg:!hidden">
-          <ul class="container max-w-[90vw] 2xl:max-w-[65vw] pe-20 mx-auto">
+          <ul class="container max-w-[90vw] text-white 2xl:max-w-[65vw] pe-20 mx-auto">
             <template v-for="item in menuList">
               <li v-if="item.show">
                 <nuxt-link v-if="!!item.url && item.url === '/'" @click="navigateTo(item.url,{external:true})" class="item cursor-pointer">

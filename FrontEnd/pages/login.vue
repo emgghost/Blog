@@ -52,6 +52,9 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useApi } from '../useApi'
 
+definePageMeta({
+  middleware: ['auth']
+})
 const router = useRouter()
 const api = useApi()
 
@@ -79,7 +82,7 @@ const handleLogin = async () => {
       localStorage.setItem('token', data.value.token)
       if (data.value.id) {
         localStorage.setItem('userId', data.value.id)
-        localStorage.setItem('userEmail', data.value.user.email)
+        localStorage.setItem('userEmail', data.value.email)
       }
       router.push('/admin')
     } else {
