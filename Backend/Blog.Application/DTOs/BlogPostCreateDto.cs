@@ -20,5 +20,6 @@ public class BlogPostCreateDto
     public string ImageUrl { get; set; } // آدرس عکس در سرور
     
     public string? AuthorId { get; set; }
+    public bool AddToSlider { get; set; } = false;
 
 }

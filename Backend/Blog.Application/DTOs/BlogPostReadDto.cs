@@ -10,5 +10,6 @@ public class BlogPostReadDto
     public List<TagReadDto> Tags { get; set; }
     
     public string ImageUrl { get; set; } // آدرس عکس در سرور
+    public bool AddToSlider { get; set; }
 
 }

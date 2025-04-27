@@ -16,4 +16,6 @@ public class BlogPostUpdateDto
 
     public List<int> CategoryIds { get; set; } = new();
     public List<int> TagIds { get; set; } = new();
+    public bool AddToSlider { get; set; } = false;
+
 }

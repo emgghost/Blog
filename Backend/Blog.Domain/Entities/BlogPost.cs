@@ -35,4 +35,5 @@ public class BlogPost
     public string ImageUrl { get; set; } // آدرس عکس در سرور
 
     public long ReadCount { get; set; } = 0;
+    public bool AddToSlider { get; set; } = false;
 }
