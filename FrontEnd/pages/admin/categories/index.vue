@@ -64,7 +64,7 @@
                       icon="mdi-pencil"
                       size="small"
                       color="primary"
-                      class="mr-2"
+                      class="ml-2"
                       @click="editCategory(category)"
                     >
                     </v-btn>

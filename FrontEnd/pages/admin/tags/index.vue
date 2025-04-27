@@ -40,11 +40,10 @@
         </v-card>
       </v-col>
     </v-row>
-
     <!-- Tags List -->
     <v-row class="mt-4">
       <v-col cols="12">
-        <v-card>
+        <v-card class="shadow-2xl">
           <v-card-title>لیست برچسب‌ها</v-card-title>
           <v-card-text>
             <v-table>
@@ -64,7 +63,7 @@
                       icon="mdi-pencil"
                       size="small"
                       color="primary"
-                      class="mr-2"
+                      class="ml-2"
                       @click="editTag(tag)"
                     >
                     </v-btn>

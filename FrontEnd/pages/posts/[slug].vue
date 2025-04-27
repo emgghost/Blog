@@ -8,7 +8,7 @@
           {{ post.title }}
         </div>
         <!-- Blog Author -->
-        <div class="flex gap-2 row">
+        <div class="flex gap-2 row mb-2">
           <span v-if="!post.author" class="text-[#888f96]">
              نویسنده :
           </span>
@@ -26,8 +26,6 @@
         <q-img
             :src="fileUrl + post.imageUrl"
             class="blog-image"
-            style="height: 400px; object-fit: cover"
-            :ratio="16/9"
         />
         <!-- Blog Stats -->
         <div class="q-my-md w-fit px-4 flex border bg-white rounded-full justify-center items-center gap-2">
@@ -54,17 +52,28 @@
             {{ category.name }}
           </q-chip>
         </div>
+        <!-- Tags -->
+        <div class="row items-center q-mt-md border p-2 rounded-lg">
+          برچسب ها :
+          <q-chip
+              v-for="tag in post.tags"
+              :key="tag.id"
+              class="q-ma-sm blog-chip bg-blue-100 rounded-full hover:!bg-blue-500 transition-all duration-200 cursor-pointer hover:text-white"
+          >
+            {{ tag.name }}
+          </q-chip>
+        </div>
       </div>
       <div class="w-full min-h-[500px] grid grid-cols-3 gap-2 max-md:grid-cols-2 max-sm:grid-cols-1">
         <div class="flex w-full items-center col-span-full ">
           <h1 class="text-bold text-[24px] w-fit">ممکن است علاقه داشته باشید</h1>
           <q-icon name="arrow_back" class="text-[24px]"/>
         </div>
-        <div v-for="(item,index) in posts.filter((blog)=>blog.id !== post.id)" :key="item.id" class="col-span-1">
+        <div v-for="(item,index) in posts.filter((blog)=>blog.id !== post.id)" :key="item.id" class="col-span-1 cursor-pointer" @click="()=>router.push(`${item.slug}`)">
           <v-card class="elevation-3 blog-card group" v-if="index < 3 && item.id!==post.id">
             <v-img :src="fileUrl + item.imageUrl" height="200px" cover
                    class="rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all "></v-img>
-            <v-card-title @click="goToPost(item.slug)" class="text-[#00524B] !font-bold">
+            <v-card-title class="text-[#00524B] !font-bold">
               {{ item.title }}
             </v-card-title>
             <v-card-subtitle class="flex gap-2">
@@ -104,21 +113,41 @@
             indicator-color="negative"
             align="justify"
         >
-          <q-tab name="mails" label="محبوب ها"/>
-          <q-tab name="alarms" label="ترند ها"/>
+          <q-tab name="favorites" label="محبوب ها"/>
+          <q-tab name="new" label="ترند ها"/>
         </q-tabs>
 
         <q-separator/>
 
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="mails">
-            <div class="text-h6">Mails</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <q-tab-panel name="favorites">
+            <div class="text-h6">پر بازدید ترین مطالب</div>
+            <div v-for="(item,index) in posts.filter((blog)=>blog.id !== post.id).sort((a,b)=>b.readCount - a.readCount).slice(0,3)" :key="item.id" class="w-full my-1">
+              <div class="h-[100px] flex group cursor-pointer" @click="()=>router.push(`${item.slug}`)">
+                <div class="w-full flex items-center" :class="index !== 2 ? 'border-b':''">
+                  <v-card-title class="text-[#00524B] w-3/4 !font-bold text-wrap text-[16px]">
+                    {{ item.title }}
+                  </v-card-title>
+                  <v-img :src="fileUrl + item.imageUrl"
+                         class="!max-w-[96px] !max-h-[72px] rounded-t-lg group-hover:!scale-105 delay-3s duration-500 overflow-hidden  transition-all "/>
+                </div>
+              </div>
+            </div>
           </q-tab-panel>
 
-          <q-tab-panel name="alarms">
-            <div class="text-h6">Alarms</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <q-tab-panel name="new">
+            <div class="text-h6">تازه ترین ها</div>
+            <div v-for="(item,index) in posts.filter((blog)=>blog.id !== post.id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0,3)" :key="item.id" class="w-full my-1">
+              <div class="h-[100px] flex group cursor-pointer" @click="()=>router.push(`${item.slug}`)">
+                <div class="w-full flex items-center" :class="index !== 2 ? 'border-b':''">
+                  <v-card-title @click="goToPost(item.slug)" class="text-[#00524B] w-3/4 !font-bold text-wrap text-[16px]">
+                    {{ item.title }}
+                  </v-card-title>
+                  <v-img :src="fileUrl + item.imageUrl"
+                         class="!max-w-[96px] !max-h-[72px] rounded-t-lg group-hover:!scale-105 delay-3s duration-500 overflow-hidden  transition-all "/>
+                </div>
+              </div>
+            </div>
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -130,18 +159,35 @@
 import {useApi} from '../../useApi';
 import {useRoute} from 'vue-router';
 import moment from "moment-jalaali";
-
-const router = useRoute();
 const api = useApi();
 const fileUrl = api.fileUrl;
-const tab = ref('mails')
+const tab = ref('favorites')
 const {data: posts, status: postStatuses, error} = await useApi().getPosts();
+const router = useRouter();
+const route = useRoute();
 // گرفتن اطلاعات پست با استفاده از API
-const {data: post, status} = await api.getPostBySlug(router.params.slug);
-
-const routered = useRouter();
+const {data: post, status} = await api.getPostBySlug(route.params.slug);
+const seoKeyWords = ref()
+const generateSeoKeywords = ()=>{
+  if (post.value.tags.length) {
+    seoKeyWords.value = post.value.tags.map((item)=> item.name.trim()).filter(Boolean).join(', ')
+  }
+}
+watch(() => post.value, () => {
+  generateSeoKeywords();
+}, { immediate: true });
+useHead({
+  title:`${route.params.slug.replace('-',' ')} - وبلاگ یک حسابدار`,
+  meta: [
+    { name:'description',content:'وبلاگ آموزشی یک حسابدار با هدف آموزش مبانی مالیاتی و سامانه مودیان مالیاتی در خدمت شماست.' },
+    {
+      name: 'keywords',
+      content: computed(() => seoKeyWords.value)
+    },
+  ]
+})
 const goToPost = (slug) => {
-  routered.push(`/posts/${slug}`);
+  router.push(`/posts/${slug}`);
 };
 </script>
 
@@ -163,8 +209,8 @@ const goToPost = (slug) => {
 }
 
 .blog-image {
-  height: 400px;
-  object-fit: cover;
+  max-height: 400px;
+  object-fit: contain;
   border-radius: 12px 12px 0 0;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="border rounded-lg">
     <v-form @submit.prevent="updatePost">
       <v-img :src="api.fileUrl + post.imageUrl" width="100%" class="mb-4"></v-img>
       <v-file-input
@@ -32,7 +32,7 @@
         :disabled="isSubmitting || isLoadingTags"
       ></v-select>
       <RichTextEditor v-model="post.content" />
-      <v-btn type="submit" color="primary">ذخیره تغییرات</v-btn>
+      <v-btn type="submit" class="mt-4" color="primary">ذخیره تغییرات</v-btn>
     </v-form>
   </v-container>
 </template>
