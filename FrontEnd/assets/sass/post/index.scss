@@ -1,0 +1,22 @@
+.blog-content{
+  @apply relative
+}
+.blog-content h1{
+  @apply text-[24px] font-bold;
+}
+.blog-content h2{
+  @apply text-[20px] font-bold bg-[#0D9488]/30 rounded-lg ps-2 my-2 relative;
+}
+.blog-content h2:after{
+  content: "";
+  @apply h-full w-[10px] absolute -start-3 rounded-md bg-[#0D9488];
+}
+.blog-content ol{
+  @apply list-decimal;
+}
+.blog-content ul{
+  @apply list-disc;
+}
+.blog-content a{
+  @apply italic underline absolute end-0;
+}

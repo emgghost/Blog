@@ -4,9 +4,9 @@
       <q-skeleton v-if="!status" height="400px" square class="full-width"/>
       <div v-else class="w-full p-1">
         <!-- Blog Title -->
-        <div class="text-h4 text-primary text-center q-my-md">
+        <a class="text-h4 text-primary text-center q-my-md" :href="`/posts/${post.slug}`" :title="post.title">
           {{ post.title }}
-        </div>
+        </a>
         <!-- Blog Author -->
         <div class="flex gap-2 row mb-2">
           <span v-if="!post.author" class="text-[#888f96]">
@@ -23,10 +23,14 @@
           </span>
         </div>
         <!-- Blog Image -->
-        <q-img
-            :src="fileUrl + post.imageUrl"
-            class="blog-image"
-        />
+        <div class="row w-full">
+          <img
+              :alt="post.title"
+              :title="post.title"
+              :src="fileUrl + post.imageUrl"
+              class="blog-image w-full"
+          />
+        </div>
         <!-- Blog Stats -->
         <div class="q-my-md w-fit px-4 flex border bg-white rounded-full justify-center items-center gap-2">
           <div class="flex gap-1 !border-l px-3 py-2 border-gray-200 items-center">
@@ -42,7 +46,7 @@
         <div class="q-my-md text-body1 blog-content" v-html="post.content"></div>
 
         <!-- Categories -->
-        <div class="row items-center q-mt-md">
+        <div class="row items-center q-mt-md" v-if="!!post.categories.length">
           دسته بندی ها :
           <q-chip
               v-for="category in post.categories"
@@ -53,7 +57,7 @@
           </q-chip>
         </div>
         <!-- Tags -->
-        <div class="row items-center q-mt-md border p-2 rounded-lg">
+        <div class="row items-center q-mt-md border p-2 rounded-lg" v-if="!!post.tags.length">
           برچسب ها :
           <q-chip
               v-for="tag in post.tags"
@@ -123,7 +127,7 @@
           <q-tab-panel name="favorites">
             <div class="text-h6">پر بازدید ترین مطالب</div>
             <div v-for="(item,index) in posts.filter((blog)=>blog.id !== post.id).sort((a,b)=>b.readCount - a.readCount).slice(0,3)" :key="item.id" class="w-full my-1">
-              <div class="h-[100px] flex group cursor-pointer" @click="()=>router.push(`${item.slug}`)">
+              <a class="h-[100px] flex group cursor-pointer" :href="`/posts/${item.slug}`">
                 <div class="w-full flex items-center" :class="index !== 2 ? 'border-b':''">
                   <v-card-title class="text-[#00524B] w-3/4 !font-bold text-wrap text-[16px]">
                     {{ item.title }}
@@ -131,7 +135,7 @@
                   <v-img :src="fileUrl + item.imageUrl"
                          class="!max-w-[96px] !max-h-[72px] rounded-t-lg group-hover:!scale-105 delay-3s duration-500 overflow-hidden  transition-all "/>
                 </div>
-              </div>
+              </a>
             </div>
           </q-tab-panel>
 
@@ -209,7 +213,6 @@ const goToPost = (slug) => {
 }
 
 .blog-image {
-  max-height: 400px;
   object-fit: contain;
   border-radius: 12px 12px 0 0;
 }
@@ -219,7 +222,6 @@ const goToPost = (slug) => {
   color: #424242;
   text-align: justify;
 }
-
 .blog-chip {
   font-size: 14px;
   font-weight: bold;

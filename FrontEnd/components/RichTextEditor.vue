@@ -96,16 +96,5 @@ export default {
 };
 </script>
 <style scoped>
-/* Optional: RTL fix for toolbar */
-.ql-picker-label svg{
-  left: 0 !important;
-  right: auto !important;
-}
-.ql-editor {
-  direction: rtl !important;
-  text-align: right !important;
-}
-.ql-formats {
-margin:0 !important;
-}
+
 </style>

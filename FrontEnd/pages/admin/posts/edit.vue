@@ -31,6 +31,7 @@
         :loading="isLoadingTags"
         :disabled="isSubmitting || isLoadingTags"
       ></v-select>
+      <q-checkbox v-model="post.addToSlider" label="استفاده در اسلایدر" />
       <RichTextEditor v-model="post.content" />
       <v-btn type="submit" class="mt-4" color="primary">ذخیره تغییرات</v-btn>
     </v-form>
@@ -58,6 +59,7 @@ const post = ref({
   title: "",
   content: "",
   slug: "",
+  addToSlider: false,
   categoryIds: [],
   tagIds: []
 });
@@ -98,10 +100,10 @@ const deleteImage = async () => {
 onMounted(async () => {
   try {
     await Promise.all([fetchCategories(), fetchTags()]);
-    
+
     const { data } = await api.getPostBySlug(route.query.slug);
     if (data.value) {
-      post.value = { 
+      post.value = {
         ...data.value,
         categoryIds: data.value.categories?.map(c => c.id) || [],
         tagIds: data.value.tags?.map(t => t.id) || []
