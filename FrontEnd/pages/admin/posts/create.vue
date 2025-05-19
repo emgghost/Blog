@@ -19,36 +19,39 @@
         :disabled="isSubmitting"
         required
       ></v-text-field>
-      <v-select
-        v-model="post.categoryIds"
-        :items="categories"
-        item-title="name"
-        variant="outlined"
-        item-value="id"
-        label="دسته‌بندی‌ها"
-        multiple
-        chips
-        :loading="isLoadingCategories"
-        :disabled="isSubmitting || isLoadingCategories"
-      ></v-select>
-      <v-select
-        v-model="post.tagIds"
-        :items="tags"
-        item-title="name"
-        item-value="id"
-        variant="outlined"
-        label="برچسب‌ها"
-        multiple
-        chips
-        :loading="isLoadingTags"
-        :disabled="isSubmitting || isLoadingTags"
-      ></v-select>
-      <RichTextEditor 
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-2">
+        <v-select
+            v-model="post.categoryIds"
+            :items="categories"
+            item-title="name"
+            variant="outlined"
+            item-value="id"
+            label="دسته‌بندی‌ها"
+            multiple
+            chips
+            :loading="isLoadingCategories"
+            :disabled="isSubmitting || isLoadingCategories"
+        ></v-select>
+        <v-select
+            v-model="post.tagIds"
+            :items="tags"
+            item-title="name"
+            item-value="id"
+            variant="outlined"
+            label="برچسب‌ها"
+            multiple
+            chips
+            :loading="isLoadingTags"
+            :disabled="isSubmitting || isLoadingTags"
+        ></v-select>
+      </div>
+      <q-checkbox v-model="post.addToSlider" label="استفاده در اسلایدر" />
+      <RichTextEditor
         v-model="post.content"
       />
-      <v-btn 
-        type="submit" 
-        color="primary" 
+      <v-btn
+        type="submit"
+        color="primary"
         class="mt-4"
         :loading="isSubmitting"
         :disabled="!post.title || !post.content"
@@ -86,6 +89,7 @@ const post = ref({
   content: '',
   imageUrl: '',
   categoryIds: [],
+  addToSlider:false,
   tagIds: [],
   authorId: process.client ? localStorage.getItem('userId') : null
 })

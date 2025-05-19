@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { NuxtLink } from '#components'
 // Import Swiper styles
 import 'swiper/css';
+import { useApi } from "../useApi";
 
 import 'swiper/css/navigation';
 
@@ -86,6 +87,9 @@ watch(()=>route.name,
       isMenuOpen.value = false
     }
 )
+
+const { data: posts, status, error } = await useApi().getPosts();
+const { request, fileUrl } = useApi();
 </script>
 <template>
   <v-app>
@@ -174,10 +178,26 @@ watch(()=>route.name,
     </v-app-bar>
     <v-main class="!bg-[#edf3f5]">
       <swiper :navigation="true" :modules="modules" class="mySwiper !h-[500px] mb-14" v-if="route.path === '/'">
-        <swiper-slide v-for="n in 6" class="!bg-purple-700">
-          جا کاوری {{ n }}
-          <div class="w-[500px] h-[150px] bg-white absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl flex items-center justify-center">
-            جا تایتلی
+        <swiper-slide v-for="post in posts.filter((item)=>item.addToSlider===true)">
+          <img :alt="post.title" :title="post.title" :src="fileUrl + post.imageUrl" class="h-[500px] w-full object-fill rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all"/>
+          <div class="flex-col gap-2 w-[500px] h-[150px] bg-white absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/3 rounded-xl flex items-center justify-center">
+            <div v-if="!!post.categories.length" class="w-full justify-center gap-1 flex">
+              <span v-for="item in post.categories" v-text="item.name" class="w-fit font-thin flex h-full items-center justify-center cursor-pointer p-1 border border-gray-400 bg-white hover:bg-[#0D9488]/80 transition-all duration-500 text-black hover:text-white rounded-full"/>
+            </div>
+            <a :href="`/posts/${post.slug}`" :title="post.title" class="hover:text-[#0D9488] transition-all ease-in-out duration-500 cursor-pointer">
+              {{ post.title }}
+            </a>
+            <div class="w-full flex !text-gray-400 font-thin justify-center gap-3">
+              {{ new moment(post.createdAt).format('jD jMMMM jYYYY')}}
+              <div class="flex gap-1 items-center">
+                <q-icon name="comment" class="text-[18px] text-primary"/>
+                {{post.comments.length}}
+              </div>
+              <div class="flex gap-1 items-center">
+                <q-icon name="visibility" class="text-[18px] text-[#219e00]"/>
+                {{post.readCount}}
+              </div>
+            </div>
           </div>
         </swiper-slide>
       </swiper>
