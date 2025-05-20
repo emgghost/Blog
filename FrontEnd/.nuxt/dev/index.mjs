@@ -692,6 +692,22 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/": {
+        "prerender": true,
+        "ssr": true
+      },
+      "/admin/**": {
+        "prerender": false,
+        "ssr": false
+      },
+      "/auth/**": {
+        "prerender": true,
+        "ssr": true
+      },
+      "/posts/**": {
+        "prerender": true,
+        "ssr": true
+      },
       "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"
