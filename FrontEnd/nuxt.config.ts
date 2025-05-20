@@ -2,8 +2,13 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
     target: 'static',
-
-    ssr: false,
+    ssr:false,
+    routeRules: {
+        '/': { prerender: true, ssr: true },
+        '/admin/**': { prerender: false, ssr: false },
+        '/auth/**': { prerender: true, ssr: true },
+        '/posts/**': { prerender: true, ssr: true },
+    },
     pages: true,
 
     app: {
