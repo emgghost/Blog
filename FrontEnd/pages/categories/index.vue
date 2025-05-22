@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import {api} from "useApi";
+import { useApi } from '../../useApi';
+const api = useApi();
 
 export default {
 

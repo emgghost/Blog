@@ -67,7 +67,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            baseURL: 'http://localhost:5000/api'
+            baseURL: 'https://blogapi.yekhesabdar.com/api'
         }
     },
 
