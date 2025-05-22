@@ -1,5 +1,6 @@
 using Blog.Application.DTOs;
 using Blog.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.WebApi.Controllers;
@@ -23,6 +24,7 @@ public class TagsController(ITagService tagService) : ControllerBase
         return Ok(await tagService.GetAllAsync());
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<TagDto>> Create([FromBody] TagCreateDto createDto)
     {
@@ -41,7 +43,7 @@ public class TagsController(ITagService tagService) : ControllerBase
         return Ok(tag);
     }
     
-    
+    [Authorize]
     [HttpPut("{id:int}")]
     public async Task<ActionResult<TagDto>> Update(int id, [FromBody] TagCreateDto updateDto)
     {
@@ -53,7 +55,7 @@ public class TagsController(ITagService tagService) : ControllerBase
         return Ok(tag);
     }
     
-        
+    [Authorize]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

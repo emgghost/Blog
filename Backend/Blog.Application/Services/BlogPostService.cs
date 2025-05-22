@@ -25,6 +25,34 @@ public class BlogPostService : IBlogPostService
         post.Slug = Slug.GenerateSlug(createDto.Title); // تابع تولید Slug
         
         _context.BlogPosts.Add(post);
+        
+        if (createDto.CategoryIds.Count > 0)
+        {
+            var existingCategoryIds = createDto.CategoryIds.ToHashSet();
+            
+
+            // 添加新的分类
+            var categoriesToAdd = existingCategoryIds.Select(categoryId => new BlogPostCategory
+            {
+                BlogPostId = post.Id,
+                CategoryId = categoryId
+            });
+            await _context.BlogPostCategories.AddRangeAsync(categoriesToAdd);
+        }
+        // 更新标签
+        if (createDto.TagIds.Count > 0)
+        {
+            var existingTagIds = createDto.TagIds.ToHashSet();
+            
+            // 添加新的标签
+            var tagsToAdd = createDto.TagIds.Select(tagId => new BlogPostTag
+            {
+                BlogPostId = post.Id,
+                TagId = tagId
+            });
+            await _context.BlogPostTags.AddRangeAsync(tagsToAdd);
+        }
+
         await _context.SaveChangesAsync();
         return post;
     }

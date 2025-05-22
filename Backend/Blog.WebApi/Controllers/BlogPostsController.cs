@@ -3,6 +3,7 @@ using Blog.Application.DTOs;
 using Blog.Application.Interfaces;
 using Blog.Domain.Entities;
 using Blog.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,12 +21,14 @@ public class PostsController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult<BlogPostDto>> CreatePost([FromBody] BlogPostCreateDto createDto)
     {
         var post = await _blogPostService.CreatePostAsync(createDto);
         return CreatedAtAction(nameof(GetPostBySlug), new { slug = post.Slug }, post);
     }
-
+    
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdatePost(int id, [FromBody] BlogPostUpdateDto updateDto)
     {
@@ -34,6 +37,7 @@ public class PostsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<IActionResult> DeletePost(int id)
     {
         await _blogPostService.DeletePostAsync(id);

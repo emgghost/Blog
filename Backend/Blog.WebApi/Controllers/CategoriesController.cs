@@ -1,5 +1,6 @@
 using Blog.Application.DTOs;
 using Blog.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.WebApi.Controllers;
@@ -15,6 +16,7 @@ public class CategoriesController(ICategoryService categoryService) : Controller
         return Ok(await categoryService.GetAllAsync());
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<CategoryDto>> Create([FromBody] CategoryCreateDto createDto)
     {
@@ -33,7 +35,7 @@ public class CategoriesController(ICategoryService categoryService) : Controller
         return Ok(category);
     }
     
-    
+    [Authorize]
     [HttpPut("{id:int}")]
     public async Task<ActionResult<CategoryDto>> Update(int id, [FromBody] CategoryCreateDto updateDto)
     {
@@ -45,7 +47,7 @@ public class CategoriesController(ICategoryService categoryService) : Controller
         return Ok(category);
     }
     
-        
+    [Authorize]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

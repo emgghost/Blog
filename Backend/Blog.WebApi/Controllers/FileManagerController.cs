@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.WebApi.Controllers;
@@ -6,6 +7,7 @@ namespace Blog.WebApi.Controllers;
 [ApiController]
 public class FileManagerController : Controller
 {
+    [Authorize]
     [HttpPost("upload")]
     public async Task<IActionResult> UploadImage(IFormFile file)
     {
