@@ -15,9 +15,6 @@ export default defineNuxtConfig({
         head: {
             titleTemplate: '%s',
             title: 'وبلاگ یک حسابدار',
-            htmlAttrs: {
-                lang: 'en'
-            },
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -67,7 +64,8 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            baseURL: 'https://blogapi.yekhesabdar.com/api'
+            baseURL: 'https://blogapi.yekhesabdar.com/api',
+            fileUrl: 'https://blogapi.yekhesabdar.com'
         }
     },
 

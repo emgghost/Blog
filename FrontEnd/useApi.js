@@ -1,6 +1,6 @@
 export const useApi = () => {
-  const fileUrl = 'http://localhost:5000'; // 替换为实际的文件URL前缀
   const config = useRuntimeConfig();
+  const fileUrl = config.public.fileUrl || 'http://localhost:5000'; // 替换为实际的文件URL前缀
   const baseURL = config.public.baseURL || 'http://localhost:5000/api';
 
   // Get token from local storage or another source
