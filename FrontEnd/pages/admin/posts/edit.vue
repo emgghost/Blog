@@ -65,6 +65,10 @@ const post = ref({
 });
 const categories = ref([])
 const tags = ref([])
+
+// Loading states
+const isUploading = ref(false)
+const isSubmitting = ref(false)
 const isLoadingCategories = ref(false)
 const isLoadingTags = ref(false)
 
