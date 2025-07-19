@@ -181,7 +181,7 @@ watch(() => post.value, () => {
   generateSeoKeywords();
 }, { immediate: true });
 useHead({
-  title:`${route.params.slug.replace('-',' ')} - وبلاگ یک حسابدار`,
+  title:`${route.params.slug.replace(/-/g, ' ')} - وبلاگ یک حسابدار`,
   meta: [
     { name:'description',content:'وبلاگ آموزشی یک حسابدار با هدف آموزش مبانی مالیاتی و سامانه مودیان مالیاتی در خدمت شماست.' },
     {

@@ -8,7 +8,6 @@ export default defineNuxtRouteMiddleware((to) => {
     return navigateTo('/login')
   }
   if (token && to.path.startsWith('/login')) {
-    console.log('triggered');
     return navigateTo('/admin')
   }
 })

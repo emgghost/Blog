@@ -127,9 +127,6 @@
       ],
       "#tailwind-config": [
         "./tailwind/expose"
-      ],
-      "#tailwind-config/*": [
-        "./tailwind/expose/*"
       ]
     },
     "lib": [
