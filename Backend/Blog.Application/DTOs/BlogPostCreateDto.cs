@@ -18,7 +18,8 @@ public class BlogPostCreateDto
     public List<int> TagIds { get; set; } = new();
     
     public string ImageUrl { get; set; } // آدرس عکس در سرور
-    
+    public string? SliderImageUrl { get; set; } // آدرس عکس اسلایدر در سرور
+
     public string? AuthorId { get; set; }
     public bool AddToSlider { get; set; } = false;
 

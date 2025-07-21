@@ -18,6 +18,9 @@ public class BlogPostDto
     public List<CommentDto> Comments { get; set; }
     
     public string ImageUrl { get; set; } // آدرس عکس در سرور
+    
+    public string? SliderImageUrl { get; set; } // آدرس عکس اسلایدر در سرور
+
 
     public long ReadCount { get; set; } = 0;
     public bool AddToSlider { get; set; }
