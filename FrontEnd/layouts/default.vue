@@ -184,7 +184,9 @@ const { request, fileUrl } = useApi();
           <img :alt="post.title" :title="post.title" :src="fileUrl + post.imageUrl" class="h-[500px] w-full rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all"/>
           <div class="flex-col gap-2 w-[500px] h-[150px] bg-white absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/3 rounded-xl flex items-center justify-center">
             <div v-if="!!post.categories.length" class="w-full justify-center gap-1 flex">
-              <span v-for="item in post.categories" v-text="item.name" class="w-fit font-thin flex h-full items-center justify-center cursor-pointer p-1 border border-gray-400 bg-white hover:bg-[#0D9488]/80 transition-all duration-500 text-black hover:text-white rounded-full"/>
+              <a v-for="item in post.categories" :href="`/posts?category=${item.slug}`" class="w-fit font-thin flex h-full items-center justify-center cursor-pointer p-1 border border-gray-400 bg-white hover:bg-[#0D9488]/80 transition-all duration-500 text-black hover:text-white rounded-full">
+              {{item.name}}
+              </a>
             </div>
             <a :href="`/posts/${post.slug}`" :title="post.title" class="hover:text-[#0D9488] transition-all ease-in-out duration-500 cursor-pointer">
               {{ post.title }}

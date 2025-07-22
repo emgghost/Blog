@@ -53,7 +53,9 @@
               :key="category.id"
               class="q-ma-sm blog-chip bg-white rounded-full hover:!bg-orange-600 transition-all duration-200 cursor-pointer hover:text-white"
           >
-            {{ category.name }}
+            <a :href="`/posts?category=${category.slug}`" class="w-full h-full">
+              {{category.name}}
+            </a>
           </q-chip>
         </div>
         <!-- Tags -->
@@ -64,7 +66,9 @@
               :key="tag.id"
               class="q-ma-sm blog-chip bg-blue-100 rounded-full hover:!bg-blue-500 transition-all duration-200 cursor-pointer hover:text-white"
           >
-            {{ tag.name }}
+            <a :href="`/posts?tag=${tag.slug}`" class="w-full h-full">
+              {{tag.name}}
+            </a>
           </q-chip>
         </div>
       </div>

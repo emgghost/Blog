@@ -37,6 +37,9 @@ export const useApi = () => {
   const getPostBySlug = (slug) => {
     return request(`/posts/${slug}`,);
   };
+  const getPostByCategory = (slug) => {
+    return request(`/categories/${slug}`,);
+  };
   const createPost = (postData) => {
     return request('/posts', { method: 'POST', body: postData });
   };
@@ -147,6 +150,7 @@ export const useApi = () => {
     getCategory,
     getTag,
     updateTag,
-    getPostByTag
+    getPostByTag,
+    getPostByCategory
   };
 };
