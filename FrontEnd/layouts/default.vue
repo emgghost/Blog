@@ -181,7 +181,7 @@ const { request, fileUrl } = useApi();
     <v-main class="!bg-[#edf3f5]">
       <swiper :navigation="true" :modules="modules" class="mySwiper !h-[500px] mb-14" v-if="route.path === '/'">
         <swiper-slide v-for="post in posts.filter((item)=>item.addToSlider===true)">
-          <img :alt="post.title" :title="post.title" :src="fileUrl + post.imageUrl" class="h-[500px] w-full rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all"/>
+          <img :alt="post.title" :title="post.title" :src="!!post.sliderImageUrl? fileUrl + post.sliderImageUrl : fileUrl + post.imageUrl" class="h-[500px] w-full rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all"/>
           <div class="flex-col gap-2 w-[500px] h-[150px] bg-white absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/3 rounded-xl flex items-center justify-center">
             <div v-if="!!post.categories.length" class="w-full justify-center gap-1 flex">
               <a v-for="item in post.categories" :href="`/posts?category=${item.slug}`" class="w-fit font-thin flex h-full items-center justify-center cursor-pointer p-1 border border-gray-400 bg-white hover:bg-[#0D9488]/80 transition-all duration-500 text-black hover:text-white rounded-full">

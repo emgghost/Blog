@@ -2,16 +2,18 @@
   <v-container class="border rounded-lg">
     <v-form @submit.prevent="createPost">
       <div class="flex items-center">
-      <v-img v-if="post.imageUrl" :src="fileUrl + post.imageUrl" class="mb-4" max-width="200" style="align-items: center;"></v-img>
+      <div class="w-full mb-2 border rounded-xl p-2">
+        <v-img v-if="post.imageUrl" :src="fileUrl + post.imageUrl" width="100%" class="mb-4"></v-img>
+        <span class="w-full mb-2">ابعاد پیشنهادی عرض 600 با ارتفاع 200</span>
+        <v-file-input
+            label="عکس پست"
+            @change="uploadImage"
+            accept="image/*"
+            :loading="isUploading"
+            :disabled="isUploading"
+        ></v-file-input>
+        <v-btn @click="deleteImage" color="error">حذف تصویر</v-btn>
       </div>
-      <v-file-input
-        label="عکس پست"
-        variant="outlined"
-        @change="uploadImage"
-        accept="image/*"
-        :loading="isUploading"
-        :disabled="isUploading"
-      ></v-file-input>
       <v-text-field 
         v-model="post.title" 
         label="عنوان"
@@ -45,7 +47,20 @@
             :disabled="isSubmitting || isLoadingTags"
         ></v-select>
       </div>
-      <q-checkbox v-model="post.addToSlider" label="استفاده در اسلایدر" />
+        <div class="w-full mb-2 border rounded-xl p-2">
+          <q-checkbox v-model="post.addToSlider" label="استفاده در اسلایدر"/>
+          <span class="p-2">(ابعاد پیشنهادی عرض 1500 با ارتفاع 500)</span>
+          <v-img :src="fileUrl + post.sliderImageUrl" width="100%" class="mb-4"></v-img>
+          <v-file-input
+              v-if="!!post.addToSlider"
+              label="عکس اسلایدر"
+              @change="uploadSliderImage"
+              accept="image/*"
+          ></v-file-input>
+          <v-btn v-if="!!post.addToSlider" @click="deleteSliderImage" color="error">حذف تصویر
+          </v-btn>
+        </div>
+      </div>
       <RichTextEditor
         v-model="post.content"
       />
@@ -138,7 +153,40 @@ const uploadImage = async (event) => {
     isUploading.value = false
   }
 }
+const uploadSliderImage = async (event) => {
+  const file = event?.target?.files?.[0]
+  if (!file) return
 
+  isUploading.value = true
+  const formData = new FormData()
+  formData.append('file', file)
+
+  try {
+    const response = await api.uploadFile(formData)
+    post.value.sliderImageUrl = response.imageUrl
+  } catch (error) {
+    console.error('خطا در آپلود عکس:', error)
+  } finally {
+    isUploading.value = false
+  }
+
+};
+const deleteSliderImage = async () => {
+  try {
+
+    post.value.sliderImageUrl = "";
+  } catch (error) {
+    console.error("Error deleting image:", error);
+  }
+}
+const deleteImage = async () => {
+  try {
+
+    post.value.imageUrl = "";
+  } catch (error) {
+    console.error("Error deleting image:", error);
+  }
+}
 const createPost = async () => {
   if (!post.value.title || !post.value.content) return
 

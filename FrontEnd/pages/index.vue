@@ -43,7 +43,7 @@
           </v-card-actions>
         </v-card>
       </div>
-      <a :href="`/posts`" title="" class="transition-all hover:text-[#0D9488] duration-300 ease-in-out hover:-translate-y-0.5 cursor-pointer col-span-full flex items-center justify-center bg-white shadow-[0px_2px_13px_0px_rgba(0,0,0,0.02)] rounded-full p-4">نمایش تمامی مطالب</a>
+      <a v-if="posts.length > 6" :href="`/posts`" title="" class="transition-all hover:text-[#0D9488] duration-300 ease-in-out hover:-translate-y-0.5 cursor-pointer col-span-full flex items-center justify-center bg-white shadow-[0px_2px_13px_0px_rgba(0,0,0,0.02)] rounded-full p-4">نمایش تمامی مطالب</a>
     </div>
   </div>
 </template>

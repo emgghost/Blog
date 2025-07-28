@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
-
+import {baseURL} from "nuxt/dist/core/runtime/nitro/paths";
 export default defineNuxtConfig({
     target: 'static',
     ssr:false,
@@ -42,7 +42,42 @@ export default defineNuxtConfig({
         '@nuxtjs/vuetify',
     ],
 
-    modules: ['@nuxtjs/tailwindcss','nuxt-quasar-ui'],
+    modules: ['@nuxtjs/tailwindcss', 'nuxt-quasar-ui', '@nuxtjs/sitemap'],
+    sitemap: {
+        hostname: 'https://blog.yekhesabdar.com',
+        xsl: false,
+        gzip: true,
+        defaults: {
+            lastmod: '2025-07-22T14:32:35+00:00',
+            priority: 0.8,
+            changefreq: 'monthly'
+        },
+        exclude: [
+            '/admin/**',
+            '/login/**',
+            '/categories/**',
+            '/auth/**',
+            '/inspire',
+            '/tags/**',
+        ],
+         async urls () {
+            try {
+                const baseURL = process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:5000/api';
+                const response = await fetch(`${baseURL}/posts`);
+                const posts = await response.json();
+                console.log('posts:',posts)
+                return posts.map((post: { slug: string }) => ({
+                    url: `/posts/${post.slug}`,
+                    changefreq: 'weekly',
+                    priority: 0.9,
+                    lastmod: new Date().toISOString()
+                }));
+            } catch (error) {
+                console.error('Sitemap generation error:', error);
+                return [];
+            }
+        }
+    },
     quasar: {
         animations: 'all',
         extras: ['fontawesome-v6'] as any,
