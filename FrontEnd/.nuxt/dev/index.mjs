@@ -2934,7 +2934,19 @@ const sources$1 = [
             "name": "sitemap:urls",
             "description": "Set with the `sitemap.urls` config."
         },
-        "urls": [],
+        "urls": [
+            {
+                "url": "/",
+                "priority": 1,
+                "changefreq": "weekly"
+            },
+            {
+                "url": "/posts",
+                "priority": 0.9,
+                "changefreq": "weekly"
+            },
+            "posts/مالیات-چیست-و-نقش-حسابدار-در-آن-چیست؟"
+        ],
         "sourceType": "user"
     },
     {

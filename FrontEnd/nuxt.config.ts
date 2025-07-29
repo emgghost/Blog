@@ -1,5 +1,14 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import {baseURL} from "nuxt/dist/core/runtime/nitro/paths";
+const createSitemapRoutes = async () => {
+    let routes = [{ url: '/', priority: 1.0,changefreq:'weekly' },{url:'/posts', priority:0.9,changefreq:'weekly'}];
+    const data = await fetch('https://blogapi.yekhesabdar.com/api/posts')
+    const posts = await data.json();
+    for (const post of posts) {
+        routes.push(`posts/${post.slug}`);
+    }
+    return routes;
+}
 export default defineNuxtConfig({
     target: 'static',
     ssr:false,
@@ -60,24 +69,9 @@ export default defineNuxtConfig({
             '/inspire',
             '/tags/**',
         ],
-         async urls () {
-            try {
-                const baseURL = process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:5000/api';
-                const response = await fetch(`${baseURL}/posts`);
-                const posts = await response.json();
-                console.log('posts:',posts)
-                return posts.map((post: { slug: string }) => ({
-                    url: `/posts/${post.slug}`,
-                    changefreq: 'weekly',
-                    priority: 0.9,
-                    lastmod: new Date().toISOString()
-                }));
-            } catch (error) {
-                console.error('Sitemap generation error:', error);
-                return [];
-            }
-        }
-    },
+        urls: createSitemapRoutes
+        },
+
     quasar: {
         animations: 'all',
         extras: ['fontawesome-v6'] as any,
