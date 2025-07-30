@@ -67,5 +67,19 @@ public class CategoryService : ICategoryService
         return;
     }
 
+    public async Task<GetPostByCategoryDto> GetPostByCategoryAsync(string slug)
+    {
+        var tag = await _context.Categories
+            .Include(t => t.BlogPostCategories)
+            .ThenInclude(pt => pt.BlogPost)
+            .ThenInclude(p => p.BlogPostCategories)
+            .ThenInclude(pc => pc.Category)
+            .SingleOrDefaultAsync(x => x.Slug == slug);
+        
+        var res = _mapper.Map<GetPostByCategoryDto>(tag);
+        res.BlogPosts = _mapper.Map<List<BlogPostDto>>(tag.BlogPostCategories.Select(x => x.BlogPost));
+        return res;
+    }
+
     // سایر متدها (Update, Delete, GetById)
 }

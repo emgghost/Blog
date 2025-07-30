@@ -10,6 +10,14 @@ namespace Blog.WebApi.Controllers;
 [ApiController]
 public class CategoriesController(ICategoryService categoryService) : ControllerBase
 {
+    [HttpGet("{slug}")]
+    public async Task<ActionResult<GetPostByCategoryDto>> GetPostByCategory(string slug)
+    {
+        var post = await categoryService.GetPostByCategoryAsync(slug);
+
+        return Ok(post);
+    }
+    
     [HttpGet]
     public async Task<ActionResult<List<CategoryDto>>> GetAll()
     {
