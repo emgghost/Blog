@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /tags/
+Disallow: /categories/
+Disallow: /login/
+Disallow: /auth/
+Disallow: /inspire
+
+Sitemap: https://blog.yekhesabdar.com/sitemap.xml

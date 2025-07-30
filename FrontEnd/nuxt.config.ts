@@ -1,7 +1,12 @@
-import { defineNuxtConfig } from 'nuxt/config'
+import {defineNuxtConfig} from 'nuxt/config'
 import {baseURL} from "nuxt/dist/core/runtime/nitro/paths";
+
 const createSitemapRoutes = async () => {
-    let routes = [{ url: '/', priority: 1.0,changefreq:'weekly' },{url:'/posts', priority:0.9,changefreq:'weekly'}];
+    let routes = [{url: '/', priority: 1.0, changefreq: 'weekly'}, {
+        url: '/posts',
+        priority: 0.9,
+        changefreq: 'weekly'
+    }];
     const data = await fetch('https://blogapi.yekhesabdar.com/api/posts')
     const posts = await data.json();
     for (const post of posts) {
@@ -10,13 +15,12 @@ const createSitemapRoutes = async () => {
     return routes;
 }
 export default defineNuxtConfig({
-    target: 'static',
-    ssr:false,
+    ssr: false,
     routeRules: {
-        '/': { prerender: true, ssr: true },
-        '/admin/**': { prerender: false, ssr: false },
-        '/auth/**': { prerender: true, ssr: true },
-        '/posts/**': { prerender: true, ssr: true },
+        '/': {prerender: true, ssr: true},
+        '/admin/**': {prerender: false, ssr: false},
+        '/auth/**': {prerender: true, ssr: true},
+        '/posts/**': {prerender: true, ssr: true},
     },
     pages: true,
 
@@ -25,14 +29,14 @@ export default defineNuxtConfig({
             titleTemplate: '%s',
             title: 'وبلاگ یک حسابدار',
             meta: [
-                { charset: 'utf-8' },
-                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-                { hid: 'description', name: 'description', content: '' },
-                { name: 'format-detection', content: 'telephone=no' },
+                {charset: 'utf-8'},
+                {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+                {hid: 'description', name: 'description', content: ''},
+                {name: 'format-detection', content: 'telephone=no'},
 
             ],
             link: [
-                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+                {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
             ],
             htmlAttrs: {
                 lang: 'fa-IR',
@@ -51,7 +55,7 @@ export default defineNuxtConfig({
         '@nuxtjs/vuetify',
     ],
 
-    modules: ['@nuxtjs/tailwindcss', 'nuxt-quasar-ui', '@nuxtjs/sitemap'],
+    modules: ['@nuxtjs/tailwindcss', 'nuxt-quasar-ui', '@nuxtjs/robots', '@nuxtjs/sitemap'],
     sitemap: {
         hostname: 'https://blog.yekhesabdar.com',
         xsl: false,
@@ -70,8 +74,24 @@ export default defineNuxtConfig({
             '/tags/**',
         ],
         urls: createSitemapRoutes
-        },
-
+    },
+    robots: {
+        rules: [
+            {
+                userAgent: '*',
+                disallow: [
+                    '/admin/',
+                    '/tags/',
+                    '/categories/',
+                    '/login/',
+                    '/auth/',
+                    '/inspire',
+                ]
+            }
+        ],
+        sitemap: 'https://blog.yekhesabdar.com/sitemap.xml',
+        injectSitemap:false
+    },
     quasar: {
         animations: 'all',
         extras: ['fontawesome-v6'] as any,
