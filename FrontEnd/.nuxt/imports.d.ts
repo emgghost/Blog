@@ -35,4 +35,5 @@ export { createSitePathResolver, withSiteTrailingSlash, withSiteUrl } from '../n
 export { useDialogPluginComponent, useFormChild, useInterval, useMeta, useQuasar, useRenderCache, useSplitAttrs, useTick, useTimeout, Dialog, Notify } from 'quasar';
 export { useRobotsRule } from '../node_modules/@nuxtjs/robots/dist/runtime/app/composables/useRobotsRule';
 export { useBotDetection } from '../node_modules/@nuxtjs/robots/dist/runtime/app/composables/useBotDetection';
+export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

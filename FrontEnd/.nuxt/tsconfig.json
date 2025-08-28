@@ -131,8 +131,11 @@
       "#tailwind-config": [
         "./tailwind/expose"
       ],
+      "#tailwind-config/*": [
+        "./tailwind/expose/*"
+      ],
       "#app-manifest": [
-        "./manifest/meta/fb11a5d9-c6ab-411a-a016-ab5272ef8e98.json"
+        "./manifest/meta/dev"
       ],
       "#components": [
         "./components"

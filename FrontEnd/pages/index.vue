@@ -16,7 +16,7 @@
     <div v-else class="!w-full !grid !grid-cols-3 gap-4 max-md:!grid-cols-2 max-sm:!grid-cols-1">
       <div v-for="(post,index) in posts" :key="post.id" class="w-full">
         <v-card class="elevation-3 blog-card group" v-if="index<6">
-          <img :src="fileUrl + post.imageUrl" :alt="post.title" :title="post.title" class="!h-[200px] w-full object-cover rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all "></img>
+          <img :src="fileUrl + post.imageUrl" :alt="post.title" :title="post.title" class="!h-[250px] w-full object-cover rounded-t-lg group-hover:!scale-110 delay-3s duration-500  transition-all "></img>
           <v-card-title @click="goToPost(post.slug)" class="text-[#00524B] !font-bold">
             {{ post.title }}
           </v-card-title>
